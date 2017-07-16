@@ -1,0 +1,15 @@
+tmp/
+bower_components/
+dist/
+/.bundle
+#/platforms
+
+.bundle/
+bundle
+bin/
+/node_modules
+
+../.idea/
+.idea/
+
+projectFilesBackup/
