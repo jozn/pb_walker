@@ -5,9 +5,15 @@ import (
 	"fmt"
 	"github.com/dsymonds/gotoc/parser"
 
+	"bytes"
 	"github.com/dsymonds/gotoc/ast"
+	"log"
 	"ms/sun/helper"
+	"text/template"
+    "io/ioutil"
+    "os"
 )
+
 ////////// Service /////////
 type ServiceView struct {
 	Name    string
@@ -55,23 +61,11 @@ type EnumFieldView struct {
 //////////////////////////
 
 func main() {
-
-	ast, err := parser.ParseFiles([]string{"1.proto"}, []string{})
+	ast, err := parser.ParseFiles([]string{"1.proto"}, []string{"./play/"})
 
 	fmt.Println(ast, err)
 	fmt.Println(err)
 	for _, f := range ast.Files {
-		/*fmt.Println(f.Comments)
-		  fmt.Printf("%+v \n",f.Messages[0])
-		  fmt.Printf("%+v \n",f.Messages[0].Fields[0])
-		  fmt.Printf("%+v \n",f.Messages[0].Up)
-		  fmt.Printf("%v \n",f.Syntax)
-		  fmt.Printf("%v \n",f.Syntax)
-		  fmt.Printf("%+v \n",f)
-		  fmt.Printf("%#v \n",f)*/
-		//PrettyPrint(f)
-
-		//fmt.Printf("%# v", pretty.Formatter(f))
 		//helper.PertyPrint(f)
 
 		_ = f
@@ -80,6 +74,8 @@ func main() {
 	helper.PertyPrint(ExtractAllServicesViews(ast))
 	helper.PertyPrint(ExtractAllMessagesViews(ast))
 	helper.PertyPrint(ExtractAllEnumsViews(ast))
+
+	templSerivces(ExtractAllServicesViews(ast))
 
 }
 
@@ -171,4 +167,128 @@ func findComment(pos ast.Position, pbFile *ast.File) string {
 func PrettyPrint(v interface{}) {
 	b, _ := json.MarshalIndent(v, "", "  ")
 	println(string(b))
+}
+
+func templSerivcesEach_DEP(services []ServiceView) {
+	tpl := template.New("go_interface")
+	tpl, err := tpl.Parse(tplGoInterface)
+	noErr(err)
+
+	bts := bytes.NewBufferString("")
+	//tpl.Execute(bts,nil)
+
+	for _, s := range services {
+		err = tpl.Execute(bts, s)
+		noErr(err)
+
+	}
+	fmt.Println(bts.String())
+
+}
+
+func templSerivces(services []ServiceView) {
+	tpl := template.New("go_interface")
+	tpl, err := tpl.Parse(tplGoInterface)
+	noErr(err)
+
+	s := struct {
+		Services []ServiceView
+	}{
+		Services: services,
+	}
+
+	bts := bytes.NewBufferString("")
+	err = tpl.Execute(bts, s)
+	noErr(err)
+
+	fmt.Println(bts.String())
+    ioutil.WriteFile("./play/gen_sample_out.go",[]byte(bts.String()), os.ModeType)
+}
+
+func noErr(err error) {
+	if err != nil {
+		log.Panic(err)
+	}
+}
+
+const tplGoInterface = `
+package x
+
+import (
+    "strings"
+    "github.com/golang/protobuf/proto"
+    "errors"
+)
+
+
+type RPC_UserParam interface {
+	GetUserId() int
+	IsUser() bool
+}
+
+type RPC_ResponseHandlerInterface interface {
+	HandleOfflineResult(interface{}, error) int
+	IsUserOnlineResult(interface{}, error) bool
+	HandelError(error)
+}
+
+var RPC_ResponseHandler RPC_ResponseHandlerInterface
+
+//note: rpc methods cant have equal name they must be different even in different rpc services
+type RFC_AllHandlersInteract interface {
+{{range .Services}}
+   {{.Name}}
+{{end}}
+}
+
+/////////////// Interfaces ////////////////
+{{range .Services}}
+type {{.Name}} interface {
+{{- range .Methods}}
+    {{.MethodName}}({{.InTypeName}}, ) (*{{.OutTypeName}} ,error)
+{{- end}}
+}
+{{end}}
+
+
+////////////// map of rpc methods to all
+func HandleRpcs(cmd PB_CommandToClient, params RPC_UserParam, rpcHandler RFC_AllHandlersInteract) {
+
+	splits := strings.Split(cmd.Command, ".")
+
+	if len(splits) != 2 {
+		return
+	}
+
+	switch splits[0] {
+{{range .Services}}
+    case "{{.Name}}": //each pb_service
+            rpc,ok := rpcHandler.({{.Name}})
+            if !ok {
+                RPC_ResponseHandler.HandelError(errors.New("rpcHandler could not be cast to : {{.Name}}"))
+                return
+            }
+
+            switch splits[1]  {
+            {{- range .Methods}}
+                case "{{.MethodName}}": //each pb_service_method
+                    load := &{{.InTypeName}}{}
+                    err := proto.Unmarshal(cmd.Data, load)
+                    if err == nil {
+                        res, err := rpc.{{.MethodName}}(load)
+                        RPC_ResponseHandler.HandleOfflineResult(res,err)
+                    }else{
+                     RPC_ResponseHandler.HandelError(err)
+                    }
+                }
+            {{- end -}}
+            }
+    }
+{{- end}}
+}
+
+`
+
+type sss interface {
+	SomeMethod(string) (int, error)
 }
