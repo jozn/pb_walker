@@ -1,4 +1,4 @@
-package x
+package _go
 
 import (
 "github.com/golang/protobuf/proto"

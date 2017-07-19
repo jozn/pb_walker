@@ -7,11 +7,11 @@ import (
 
 	"bytes"
 	"github.com/dsymonds/gotoc/ast"
+	"io/ioutil"
 	"log"
 	"ms/sun/helper"
+	"os"
 	"text/template"
-    "io/ioutil"
-    "os"
 )
 
 ////////// Service /////////
@@ -60,8 +60,18 @@ type EnumFieldView struct {
 
 //////////////////////////
 
+const DIR_OUTPUT = `C:\Go\_gopath\src\ms\sun\models\x\pb__gen_ant.go` //"./play/gen_sample_out.go"
 func main() {
-	ast, err := parser.ParseFiles([]string{"1.proto"}, []string{"./play/"})
+	const DIR_PROTOS = `C:\Go\_gopath\src\ms\sun\models\protos`
+	files, err := ioutil.ReadDir(DIR_PROTOS)
+	noErr(err)
+	protos := make([]string, len(files))
+	for i, f := range files {
+		protos[i] = f.Name()
+	}
+
+	//ast, err := parser.ParseFiles([]string{"1.proto"}, []string{"./play/"})
+	ast, err := parser.ParseFiles(protos, []string{DIR_PROTOS})
 
 	fmt.Println(ast, err)
 	fmt.Println(err)
@@ -202,7 +212,7 @@ func templSerivces(services []ServiceView) {
 	noErr(err)
 
 	fmt.Println(bts.String())
-    ioutil.WriteFile("./play/gen_sample_out.go",[]byte(bts.String()), os.ModeType)
+	ioutil.WriteFile(DIR_OUTPUT, []byte(bts.String()), os.ModeType)
 }
 
 func noErr(err error) {
@@ -235,24 +245,24 @@ type RPC_ResponseHandlerInterface interface {
 var RPC_ResponseHandler RPC_ResponseHandlerInterface
 
 //note: rpc methods cant have equal name they must be different even in different rpc services
-type RFC_AllHandlersInteract interface {
+type RPC_AllHandlersInteract interface {
 {{range .Services}}
    {{.Name}}
-{{end}}
+{{- end}}
 }
 
 /////////////// Interfaces ////////////////
 {{range .Services}}
 type {{.Name}} interface {
 {{- range .Methods}}
-    {{.MethodName}}({{.InTypeName}}, ) (*{{.OutTypeName}} ,error)
+    {{.MethodName}}({{.InTypeName}} ) ({{.OutTypeName}} ,error)
 {{- end}}
 }
 {{end}}
 
 
 ////////////// map of rpc methods to all
-func HandleRpcs(cmd PB_CommandToClient, params RPC_UserParam, rpcHandler RFC_AllHandlersInteract) {
+func HandleRpcs(cmd PB_CommandToClient, params RPC_UserParam, rpcHandler RPC_AllHandlersInteract) {
 
 	splits := strings.Split(cmd.Command, ".")
 
@@ -262,7 +272,7 @@ func HandleRpcs(cmd PB_CommandToClient, params RPC_UserParam, rpcHandler RFC_All
 
 	switch splits[0] {
 {{range .Services}}
-    case "{{.Name}}": //each pb_service
+    case "{{.Name}}":
             rpc,ok := rpcHandler.({{.Name}})
             if !ok {
                 RPC_ResponseHandler.HandelError(errors.New("rpcHandler could not be cast to : {{.Name}}"))
@@ -275,18 +285,16 @@ func HandleRpcs(cmd PB_CommandToClient, params RPC_UserParam, rpcHandler RFC_All
                     load := &{{.InTypeName}}{}
                     err := proto.Unmarshal(cmd.Data, load)
                     if err == nil {
-                        res, err := rpc.{{.MethodName}}(load)
+                        res, err := rpc.{{.MethodName}}(*load)
                         RPC_ResponseHandler.HandleOfflineResult(res,err)
                     }else{
                      RPC_ResponseHandler.HandelError(err)
                     }
-                }
-            {{- end -}}
+            {{- end}}
             }
-    }
 {{- end}}
 }
-
+}
 `
 
 type sss interface {
