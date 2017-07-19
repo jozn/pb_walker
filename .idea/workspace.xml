@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16656e04-4f38-4783-8e07-35d142e6d611" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ant/builder.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ant/from_proto_to_views.go" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/proto.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/play/gen_sample_out.go" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/rpc.go" afterPath="$PROJECT_DIR$/templates/rpc.tgo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/builder.go" afterPath="$PROJECT_DIR$/ant/builder.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/from_proto_to_views.go" afterPath="$PROJECT_DIR$/ant/from_proto_to_views.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/runner.go" afterPath="$PROJECT_DIR$/ant/runner.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/types.go" afterPath="$PROJECT_DIR$/ant/types.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/util.go" afterPath="$PROJECT_DIR$/ant/util.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/rpc.go" afterPath="$PROJECT_DIR$/templates/rpc.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/play/go/example_of_must_genrated_code.go" afterPath="$PROJECT_DIR$/play/go/example_of_must_genrated_code.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,23 +23,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pb_chat.proto" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../sun/models/protos/pb_chat.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
-              <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+              <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
               <folding>
-                <element signature="e#14#35#0" expanded="true" />
+                <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
               </folding>
             </state>
           </provider>
@@ -45,9 +38,11 @@
       <file leaf-file-name="runner.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ant/runner.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="285">
+              <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+              <folding>
+                <marker date="1500429440635" expanded="false" signature="20:22" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,10 +50,10 @@
       <file leaf-file-name="builder.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ant/builder.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="228">
+              <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
               <folding>
-                <element signature="e#13#90#0" expanded="true" />
+                <marker date="1500429796652" expanded="true" signature="20:22" ph="..." />
               </folding>
             </state>
           </provider>
@@ -68,9 +63,10 @@
         <entry file="file://$PROJECT_DIR$/ant/from_proto_to_views.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="76">
-              <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="67" />
+              <caret line="4" column="54" lean-forward="false" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="67" />
               <folding>
                 <element signature="e#13#51#0" expanded="true" />
+                <marker date="1500429440633" expanded="true" signature="121:123" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -90,9 +86,10 @@
         <entry file="file://$PROJECT_DIR$/ant/util.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="38">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding>
                 <element signature="e#13#25#0" expanded="true" />
+                <marker date="1500429440636" expanded="true" signature="49:51" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -102,7 +99,27 @@
         <entry file="file://$PROJECT_DIR$/ant/types.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
-              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rpc.tgo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/rpc.tgo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1007">
+              <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="example_of_must_genrated_code.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/go/example_of_must_genrated_code.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -253,12 +270,12 @@
         <option value="$PROJECT_DIR$/src/types.go" />
         <option value="$PROJECT_DIR$/src/util.go" />
         <option value="$PROJECT_DIR$/ant/util.go" />
-        <option value="$PROJECT_DIR$/ant/types.go" />
         <option value="$PROJECT_DIR$/ant/from_proto_to_views.go" />
-        <option value="$PROJECT_DIR$/ant/builder.go" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/ant/main.go" />
         <option value="$PROJECT_DIR$/ant/runner.go" />
+        <option value="$PROJECT_DIR$/ant/types.go" />
+        <option value="$PROJECT_DIR$/ant/builder.go" />
       </list>
     </option>
   </component>
@@ -272,7 +289,24 @@
     <option name="x" value="55" />
     <option name="y" value="-8" />
     <option name="width" value="1319" />
-    <option name="height" value="780" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -313,6 +347,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ant" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ant" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="ant" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -325,6 +373,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -422,7 +471,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-8" width="1319" height="780" extended-state="1" />
+    <frame x="55" y="-8" width="1319" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.223193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -455,14 +504,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../../src/text/template/template.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2508">
-          <caret line="136" column="19" lean-forward="false" selection-start-line="136" selection-start-column="19" selection-end-line="136" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../../src/html/template/template.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8322">
@@ -483,7 +524,7 @@
         <state relative-caret-position="3648">
           <caret line="204" column="43" lean-forward="false" selection-start-line="204" selection-start-column="43" selection-end-line="204" selection-end-column="43" />
           <folding>
-            <element signature="e#14#35#0" expanded="true" />
+            <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
           </folding>
         </state>
       </provider>
@@ -550,7 +591,7 @@
         <state relative-caret-position="190">
           <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding>
-            <element signature="e#14#35#0" expanded="true" />
+            <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
           </folding>
         </state>
       </provider>
@@ -589,7 +630,7 @@
         <state relative-caret-position="190">
           <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding>
-            <element signature="e#14#35#0" expanded="true" />
+            <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
           </folding>
         </state>
       </provider>
@@ -681,13 +722,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/o.go" />
-    <entry file="file://$PROJECT_DIR$/play/go/example_of_must_genrated_code.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tpl/rpc.go" />
     <entry file="file://$PROJECT_DIR$/../../../../src/io/ioutil/ioutil.go">
       <provider selected="true" editor-type-id="text-editor">
@@ -853,16 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/rpc.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#11#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../sun/models/protos/pb_global.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="584">
@@ -874,9 +898,10 @@
     <entry file="file://$PROJECT_DIR$/ant/util.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
             <element signature="e#13#25#0" expanded="true" />
+            <marker date="1500429440636" expanded="true" signature="49:51" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -889,48 +914,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ant/types.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
           <folding>
-            <element signature="e#14#35#0" expanded="true" />
+            <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant/runner.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ant/from_proto_to_views.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
-          <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="67" />
+          <caret line="4" column="54" lean-forward="false" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="67" />
           <folding>
             <element signature="e#13#51#0" expanded="true" />
+            <marker date="1500429440633" expanded="true" signature="121:123" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/rpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant/types.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/rpc.tgo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/go/example_of_must_genrated_code.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant/runner.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding>
+            <marker date="1500429440635" expanded="false" signature="20:22" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ant/builder.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="228">
+          <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
           <folding>
-            <element signature="e#13#90#0" expanded="true" />
+            <marker date="1500429796652" expanded="true" signature="20:22" ph="..." />
           </folding>
         </state>
       </provider>

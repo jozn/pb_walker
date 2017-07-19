@@ -4,6 +4,6 @@ import "ms/ant/ant"
 
 //////////////////////////
 
-func main()  {
-    ant.Run()
+func main() {
+	ant.Run()
 }
