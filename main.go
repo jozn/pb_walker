@@ -61,6 +61,8 @@ type EnumFieldView struct {
 //////////////////////////
 
 const DIR_OUTPUT = `C:\Go\_gopath\src\ms\sun\models\x\pb__gen_ant.go` //"./play/gen_sample_out.go"
+const TEMPLATES_DIR  = "./templates/"
+
 func main() {
 	const DIR_PROTOS = `C:\Go\_gopath\src\ms\sun\models\protos`
 	files, err := ioutil.ReadDir(DIR_PROTOS)
@@ -179,26 +181,11 @@ func PrettyPrint(v interface{}) {
 	println(string(b))
 }
 
-func templSerivcesEach_DEP(services []ServiceView) {
-	tpl := template.New("go_interface")
-	tpl, err := tpl.Parse(tplGoInterface)
-	noErr(err)
-
-	bts := bytes.NewBufferString("")
-	//tpl.Execute(bts,nil)
-
-	for _, s := range services {
-		err = tpl.Execute(bts, s)
-		noErr(err)
-
-	}
-	fmt.Println(bts.String())
-
-}
-
 func templSerivces(services []ServiceView) {
 	tpl := template.New("go_interface")
-	tpl, err := tpl.Parse(tplGoInterface)
+    tplGoInterface,err := ioutil.ReadFile(TEMPLATES_DIR+ "rpc.go")
+    noErr(err)
+	tpl, err = tpl.Parse(string(tplGoInterface))
 	noErr(err)
 
 	s := struct {
@@ -219,84 +206,4 @@ func noErr(err error) {
 	if err != nil {
 		log.Panic(err)
 	}
-}
-
-const tplGoInterface = `
-package x
-
-import (
-    "strings"
-    "github.com/golang/protobuf/proto"
-    "errors"
-)
-
-
-type RPC_UserParam interface {
-	GetUserId() int
-	IsUser() bool
-}
-
-type RPC_ResponseHandlerInterface interface {
-	HandleOfflineResult(interface{}, error) int
-	IsUserOnlineResult(interface{}, error) bool
-	HandelError(error)
-}
-
-var RPC_ResponseHandler RPC_ResponseHandlerInterface
-
-//note: rpc methods cant have equal name they must be different even in different rpc services
-type RPC_AllHandlersInteract interface {
-{{range .Services}}
-   {{.Name}}
-{{- end}}
-}
-
-/////////////// Interfaces ////////////////
-{{range .Services}}
-type {{.Name}} interface {
-{{- range .Methods}}
-    {{.MethodName}}({{.InTypeName}} ) ({{.OutTypeName}} ,error)
-{{- end}}
-}
-{{end}}
-
-
-////////////// map of rpc methods to all
-func HandleRpcs(cmd PB_CommandToClient, params RPC_UserParam, rpcHandler RPC_AllHandlersInteract) {
-
-	splits := strings.Split(cmd.Command, ".")
-
-	if len(splits) != 2 {
-		return
-	}
-
-	switch splits[0] {
-{{range .Services}}
-    case "{{.Name}}":
-            rpc,ok := rpcHandler.({{.Name}})
-            if !ok {
-                RPC_ResponseHandler.HandelError(errors.New("rpcHandler could not be cast to : {{.Name}}"))
-                return
-            }
-
-            switch splits[1]  {
-            {{- range .Methods}}
-                case "{{.MethodName}}": //each pb_service_method
-                    load := &{{.InTypeName}}{}
-                    err := proto.Unmarshal(cmd.Data, load)
-                    if err == nil {
-                        res, err := rpc.{{.MethodName}}(*load)
-                        RPC_ResponseHandler.HandleOfflineResult(res,err)
-                    }else{
-                     RPC_ResponseHandler.HandelError(err)
-                    }
-            {{- end}}
-            }
-{{- end}}
-}
-}
-`
-
-type sss interface {
-	SomeMethod(string) (int, error)
 }
