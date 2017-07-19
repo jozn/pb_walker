@@ -43,3 +43,16 @@ type EnumFieldView struct {
 	TagNumber int
 	PosNumber int
 }
+
+/////////////////////////////////////////
+///////////// Extractor /////////////////
+
+type GenOut struct {
+	Services []ServiceView
+	Messages []MessageView
+	Enums    []EnumView
+
+	OutGoEnumsStr string
+	OutGoRPCsStr  string
+	OutJavaStr    string
+}
