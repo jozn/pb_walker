@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16656e04-4f38-4783-8e07-35d142e6d611" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ant/util_test.go" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ant/from_proto_to_views.go" afterPath="$PROJECT_DIR$/ant/extract_proto_to_views.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/builder.go" afterPath="$PROJECT_DIR$/ant/builder.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/runner.go" afterPath="$PROJECT_DIR$/ant/runner.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/types.go" afterPath="$PROJECT_DIR$/ant/types.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/util.go" afterPath="$PROJECT_DIR$/ant/util.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,23 +19,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="runner.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/runner.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding>
-                <element signature="e#13#72#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+            <state relative-caret-position="171">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
               </folding>
@@ -39,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="builder.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="builder.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ant/builder.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+            <state relative-caret-position="228">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#13#68#0" expanded="true" />
               </folding>
@@ -51,43 +43,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="types.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="enums.proto" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/enums.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extract_proto_to_views.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ant/extract_proto_to_views.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="types.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ant/types.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="50" column="12" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="from_proto_to_views.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/from_proto_to_views.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-              <folding>
-                <element signature="e#13#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pb_global.proto" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../sun/models/protos/pb_global.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exec.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../../src/text/template/exec.go">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="176" column="19" lean-forward="false" selection-start-line="176" selection-start-column="19" selection-end-line="176" selection-end-column="19" />
+              <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -96,21 +76,33 @@
       <file leaf-file-name="util.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ant/util.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="285">
+              <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
               <folding>
-                <element signature="e#13#25#0" expanded="true" />
+                <element signature="e#13#97#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="template.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../../src/text/template/template.go">
+      <file leaf-file-name="varint.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../src/encoding/binary/varint.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="360">
+              <caret line="67" column="42" lean-forward="false" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util_test.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ant/util_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="47" column="17" lean-forward="false" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+              <folding>
+                <element signature="e#13#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -154,12 +146,16 @@
         <option value="$PROJECT_DIR$/util.go" />
         <option value="$PROJECT_DIR$/src/types.go" />
         <option value="$PROJECT_DIR$/src/util.go" />
-        <option value="$PROJECT_DIR$/ant/util.go" />
         <option value="$PROJECT_DIR$/ant/from_proto_to_views.go" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/ant/main.go" />
-        <option value="$PROJECT_DIR$/ant/types.go" />
         <option value="$PROJECT_DIR$/ant/runner.go" />
+        <option value="$PROJECT_DIR$/ant/util_test.go" />
+        <option value="$PROJECT_DIR$/ant/types.go" />
+        <option value="$PROJECT_DIR$/templates/enums.proto" />
+        <option value="$PROJECT_DIR$/ant/extract_proto_to_views.go" />
+        <option value="$PROJECT_DIR$/ant/util.go" />
+        <option value="$PROJECT_DIR$/templates/rpc_interface.java" />
         <option value="$PROJECT_DIR$/ant/builder.go" />
       </list>
     </option>
@@ -261,6 +257,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Go\_gopath\src\ms\ant\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Go\_gopath\src\ms\ant\src" />
       <recent name="C:\Go\_gopath\src\ms\proto" />
@@ -285,6 +284,46 @@
       <module name="ant" />
       <working_directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/main.go" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestHash in util_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="ant" />
+      <working_directory value="$PROJECT_DIR$/ant" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="ms/ant/ant" />
+      <pattern value="^TestHash$" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestHashEqual1Miliion in util_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="ant" />
+      <working_directory value="$PROJECT_DIR$/ant" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="ms/ant/ant" />
+      <pattern value="^TestHashEqual1Miliion$" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestMyHashHashEqual1Miliion in util_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="ant" />
+      <working_directory value="$PROJECT_DIR$/ant" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="ms/ant/ant" />
+      <pattern value="^TestMyHashHashEqual1Miliion$" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestMyHash2HashEqual1Miliion in util_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="ant" />
+      <working_directory value="$PROJECT_DIR$/ant" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="ms/ant/ant" />
+      <pattern value="^TestMyHash2HashEqual1Miliion$" />
       <method />
     </configuration>
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
@@ -343,17 +382,57 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Go Single File.go run main.go" />
+      <item index="1" class="java.lang.String" itemvalue="Go Test.TestHash in util_test.go" />
+      <item index="2" class="java.lang.String" itemvalue="Go Test.TestHashEqual1Miliion in util_test.go" />
+      <item index="3" class="java.lang.String" itemvalue="Go Test.TestMyHashHashEqual1Miliion in util_test.go" />
+      <item index="4" class="java.lang.String" itemvalue="Go Test.TestMyHash2HashEqual1Miliion in util_test.go" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Go Single File.go run main.go" />
+        <item index="1" class="java.lang.String" itemvalue="Go Test.TestMyHash2HashEqual1Miliion in util_test.go" />
+        <item index="2" class="java.lang.String" itemvalue="Go Test.TestMyHashHashEqual1Miliion in util_test.go" />
+        <item index="3" class="java.lang.String" itemvalue="Go Test.TestHashEqual1Miliion in util_test.go" />
+        <item index="4" class="java.lang.String" itemvalue="Go Test.TestHash in util_test.go" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestMyHash2HashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 22m 41s.xml">
+      <configuration name="TestMyHash2HashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHash2HashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 24m 05s.xml">
+      <configuration name="TestMyHash2HashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHash2HashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 25m 55s.xml">
+      <configuration name="TestMyHash2HashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHash2HashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 27m 13s.xml">
+      <configuration name="TestMyHash2HashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHashHashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 09m 38s.xml">
+      <configuration name="TestMyHashHashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHashHashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 10m 28s.xml">
+      <configuration name="TestMyHashHashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHashHashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 20m 47s.xml">
+      <configuration name="TestMyHashHashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHashHashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 21m 16s.xml">
+      <configuration name="TestMyHashHashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHashHashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 22m 06s.xml">
+      <configuration name="TestMyHashHashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestMyHashHashEqual1Miliion_in_util_test_go - 2017.07.19 at 08h 22m 29s.xml">
+      <configuration name="TestMyHashHashEqual1Miliion in util_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-8" width="1319" height="784" extended-state="6" />
@@ -363,7 +442,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1375" y="31" width="1006" height="689" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1660" y="66" width="447" height="689" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1455" y="31" width="314" height="689" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="1366" y="23" width="1024" height="705" />
@@ -377,6 +456,25 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1454" y="74" width="1006" height="689" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="1366" y="23" width="1024" height="705" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.223193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1455" y="31" width="314" height="689" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -389,61 +487,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../../src/io/ioutil/ioutil.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1672">
-          <caret line="94" column="19" lean-forward="true" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3648">
-          <caret line="204" column="43" lean-forward="false" selection-start-line="204" selection-start-column="43" selection-end-line="204" selection-end-column="43" />
-          <folding>
-            <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../src/os/types.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="58" column="12" lean-forward="false" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../github.com/labstack/gommon/bytes/bytes.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../src/text/template/exec.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3344">
-          <caret line="176" column="19" lean-forward="false" selection-start-line="176" selection-start-column="19" selection-end-line="176" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../src/text/template/template.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2508">
-          <caret line="136" column="19" lean-forward="false" selection-start-line="136" selection-start-column="19" selection-end-line="136" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../src/html/template/template.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8322">
-          <caret line="446" column="11" lean-forward="true" selection-start-line="446" selection-start-column="11" selection-end-line="446" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/play/1.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -672,63 +715,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/rpc.tgo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/play/go/example_of_must_genrated_code.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../sun/models/protos/pb_global.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../src/text/template/template.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant/util.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding>
-            <element signature="e#13#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../src/text/template/exec.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="176" column="19" lean-forward="false" selection-start-line="176" selection-start-column="19" selection-end-line="176" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant/from_proto_to_views.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding>
-            <element signature="e#13#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -742,16 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding>
-            <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../../src/bytes/buffer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -760,21 +741,139 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ant/builder.go">
+    <entry file="file://$PROJECT_DIR$/../sun/models/protos/pb_global.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="570">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../src/text/template/exec.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3173">
+          <caret line="176" column="19" lean-forward="false" selection-start-line="176" selection-start-column="19" selection-end-line="176" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/enums.tgo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../src/testing/testing.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="696" column="0" lean-forward="false" selection-start-line="696" selection-start-column="0" selection-end-line="696" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../src/text/template/template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../src/encoding/binary/binary.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="101" column="1" lean-forward="false" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../src/encoding/binary/varint.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="67" column="42" lean-forward="false" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant/util_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="47" column="17" lean-forward="false" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
           <folding>
-            <element signature="e#13#68#0" expanded="true" />
+            <element signature="e#13#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ant/types.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="50" column="12" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="12" />
+        <state relative-caret-position="208">
+          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant/util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <element signature="e#13#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/rpc.tgo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="40" column="33" lean-forward="true" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/rpc_interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <marker date="1500429440612" expanded="true" signature="21:35" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant/extract_proto_to_views.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/enums.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant/builder.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#13#68#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

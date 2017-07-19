@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "ir.ms.pb";
+option java_outer_classname = "PB2";
+option java_multiple_files = true;
+option optimize_for = LITE_RUNTIME; //CODE_SIZE;
+
+option go_package = "x";
+
+{{range .Services}}
+enum {{.Name}}_Enum {
+    EMPTY = 0;
+  {{- range .Methods}}
+    {{.MethodName}} = {{.Hash}};
+  {{- end}}
+}
+{{- end}}

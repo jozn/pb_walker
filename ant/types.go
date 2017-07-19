@@ -5,12 +5,14 @@ type ServiceView struct {
 	Name    string
 	Methods []MethodView
 	Comment string
+	Hash    int32
 }
 
 type MethodView struct {
 	MethodName  string
 	InTypeName  string
 	OutTypeName string
+	Hash        int32
 }
 
 ////////// Messages /////////

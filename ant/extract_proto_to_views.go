@@ -10,6 +10,7 @@ func ExtractAllServicesViews(pbFilesSet *ast.FileSet) []ServiceView {
 			serView := ServiceView{
 				Name:    ser.Name,
 				Comment: findComment(ser.Position, pbFile),
+				Hash:    Hash32(ser.Name),
 			}
 
 			for _, m := range ser.Methods {
@@ -17,6 +18,7 @@ func ExtractAllServicesViews(pbFilesSet *ast.FileSet) []ServiceView {
 					MethodName:  m.Name,
 					InTypeName:  m.InTypeName,
 					OutTypeName: m.OutTypeName,
+					Hash:        Hash32(m.Name),
 				}
 				serView.Methods = append(serView.Methods, mv)
 			}
