@@ -29,27 +29,27 @@ func TestHashEqual1Miliion(t *testing.T) {
 }
 
 func TestMyHashHashEqual1Miliion(t *testing.T) {
-    N := 100
-    mp := make(map[int]bool, N)
-    for i := 1; i < N; i++ {
-        r := MyHash("sddshkjhkjhkkjkjkhjjh" + strconv.Itoa(i))
-        if b := mp[r]; b {
-            t.Error("r is already exists: ", r)
-        }
-        fmt.Println(r)
-        mp[r] = true
-    }
+	N := 100
+	mp := make(map[int]bool, N)
+	for i := 1; i < N; i++ {
+		r := MyHash("sddshkjhkjhkkjkjkhjjh" + strconv.Itoa(i))
+		if b := mp[r]; b {
+			t.Error("r is already exists: ", r)
+		}
+		fmt.Println(r)
+		mp[r] = true
+	}
 }
 
 func TestMyHash2HashEqual1Miliion(t *testing.T) {
-    N := 100
-    mp := make(map[int]bool, N)
-    for i := 1; i < N; i++ {
-        r := MyHash2("sddshkjhkjhkkjkjkhjjh." + strconv.Itoa(i))
-        if b := mp[r]; b {
-            t.Error("r is already exists: ", r)
-        }
-        fmt.Println(r)
-        mp[r] = true
-    }
+	N := 100
+	mp := make(map[int]bool, N)
+	for i := 1; i < N; i++ {
+		r := MyHash2("sddshkjhkjhkkjkjkhjjh." + strconv.Itoa(i))
+		if b := mp[r]; b {
+			t.Error("r is already exists: ", r)
+		}
+		fmt.Println(r)
+		mp[r] = true
+	}
 }

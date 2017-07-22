@@ -4,8 +4,8 @@ import (
 	"crypto/md5"
 	"encoding/binary"
 	"log"
-    "strings"
-    "ms/sun/helper"
+	"ms/sun/helper"
+	"strings"
 )
 
 func noErr(err error) {
@@ -28,7 +28,7 @@ func Hash(str string) int {
 }
 
 func Hash32(string string) int32 {
-    return int32(Hash(string)%10000)
+	return int32(Hash(string) % 10000)
 }
 
 func MyHash(string string) int {
@@ -42,8 +42,8 @@ func MyHash(string string) int {
 }
 
 func MyHash2(string string) int {
-    s:=strings.Split(string,".")
-    rs:= helper.IntToStr((Hash(s[0]) %1000)+1) + "00" + helper.IntToStr(Hash(s[1])%100000)
-    //fmt.Println("+++++++"+rs)
-    return helper.StrToInt(rs,-1)
+	s := strings.Split(string, ".")
+	rs := helper.IntToStr((Hash(s[0])%1000)+1) + "00" + helper.IntToStr(Hash(s[1])%100000)
+	//fmt.Println("+++++++"+rs)
+	return helper.StrToInt(rs, -1)
 }
