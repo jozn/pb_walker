@@ -46,10 +46,11 @@ func tPBTypeToGoFlatType(field, pbType, fieldPerifx string) string {
 func tFlatTypeToGoPBType(field, pbType, fieldPerifx string) string {
 	r := ""
 	flatSr := pbTypesToGoFlatTypes(pbType)
-	if pbType == flatSr {
+	goSr := pbTypesToGoType(pbType)
+	if goSr == flatSr {
 		r = fieldPerifx + "." + field
 	} else {
-		r = pbType + "(" + fieldPerifx + "." + field + ")"
+		r = goSr + "(" + fieldPerifx + "." + field + ")"
 	}
 
 	return r
