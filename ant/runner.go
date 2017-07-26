@@ -4,7 +4,9 @@ import (
 	"github.com/dsymonds/gotoc/parser"
 	"io/ioutil"
 	"os"
+	_ "os"
 	"os/exec"
+	_ "os/exec"
 )
 
 const OUTPUT_DIR = `C:\Go\_gopath\src\ms\sun\models\x\` //"./play/gen_sample_out.go"
@@ -29,9 +31,13 @@ func Run() {
 	}
 
 	build(gen)
+
+	/////////// commeant albe ///
 	os.Chdir(`C:\Go\_gopath\src\ms\sun\scripts\`)
 	err = exec.Command(`C:\Go\_gopath\src\ms\sun\scripts\gen_pb.exe`).Run()
 	noErr(err)
 	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()
 	noErr(err)
+
+	////
 }

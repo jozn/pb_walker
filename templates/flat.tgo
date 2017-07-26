@@ -1,0 +1,39 @@
+package x
+
+{{range .Messages}}
+type {{.Name}}_Flat struct {
+{{- range .Fields}}
+{{.FieldName}} {{.GoFlatType}}
+{{- end}}
+}
+{{end}}
+
+
+///// to_flat ///
+{{range .Messages}}
+func(m *{{.Name}})ToFlat() *{{.Name}}_Flat {
+r := &{{.Name}}_Flat{
+{{- range.Fields}}
+    {{if IsPBPrimateTypes  .TypeName}}
+        {{- .FieldName}}:  {{tPBTypeToGoFlatType .FieldName .TypeName  "m"}} ,
+    {{- end -}}
+{{- end}}
+}
+return r
+}
+{{end}}
+
+
+///// from_flat ///
+{{range .Messages}}
+func(m *{{.Name}}_Flat)ToPB() *{{.Name}} {
+r := &{{.Name}}{
+{{- range.Fields}}
+{{if IsPBPrimateTypes  .TypeName}}
+{{- .FieldName}}:  {{tFlatTypeToGoPBType .FieldName .TypeName  "m"}} ,
+{{- end -}}
+{{- end}}
+}
+return r
+}
+{{end}}

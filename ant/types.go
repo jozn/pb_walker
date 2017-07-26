@@ -24,12 +24,13 @@ type MessageView struct {
 }
 
 type FieldView struct {
-	FieldName string
-	TypeName  string
-	Repeated  bool
-	TagNumber int
-	GoType    string
-	javaType  string
+	FieldName  string
+	TypeName   string
+	Repeated   bool
+	TagNumber  int
+	GoType     string
+	GoFlatType string
+	javaType   string
 }
 
 ////////// Enums /////////

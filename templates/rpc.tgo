@@ -32,7 +32,7 @@ type RPC_AllHandlersInteract interface {
 {{range .Services}}
 type {{.Name}} interface {
 {{- range .Methods}}
-    {{.MethodName}}(*{{.InTypeName}} ) (*{{.OutTypeName}} ,error)
+    {{.MethodName}}(i *{{.InTypeName}}, p RPC_UserParam ) (*{{.OutTypeName}} ,error)
 {{- end}}
 }
 {{end}}
@@ -70,7 +70,7 @@ func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_All
                     load := &{{.InTypeName}}{}
                     err := proto.Unmarshal(cmd.Data, load)
                     if err == nil {
-                        res, err := rpc.{{.MethodName}}(load)
+                        res, err := rpc.{{.MethodName}}(load,params)
                         if err == nil {
                             RPC_ResponseHandler.HandelError(err)
                         }else{

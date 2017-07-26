@@ -41,10 +41,13 @@ func ExtractAllMessagesViews(pbFilesSet *ast.FileSet) []MessageView {
 
 			for _, f := range msg.Fields {
 				mv := FieldView{
-					FieldName: f.Name,
-					TypeName:  f.TypeName,
-					Repeated:  f.Repeated,
-					TagNumber: f.Tag,
+					FieldName:  f.Name,
+					TypeName:   f.TypeName,
+					Repeated:   f.Repeated,
+					TagNumber:  f.Tag,
+					GoType:     pbTypesToGoType(f.TypeName),
+					GoFlatType: pbTypesToGoFlatTypes(f.TypeName),
+					javaType:   pbTypesToJavaType(f.TypeName),
 				}
 				msgView.Fields = append(msgView.Fields, mv)
 			}

@@ -13,6 +13,7 @@ func build(gen *GenOut) {
 
 	writeOutput("pb__gen_enum.proto", buildFromTemplate("enums.proto", gen))
 	writeOutput("RPC_INTERFACES.java", buildFromTemplate("RPC_INTERFACES.java", gen))
+	writeOutput("flat.go", buildFromTemplate("flat.tgo", gen))
 
 	/////// Enums /////////////////
 
@@ -20,6 +21,7 @@ func build(gen *GenOut) {
 
 func buildFromTemplate(tplName string, gen *GenOut) string {
 	tpl := template.New("go_interface" + tplName)
+	tpl.Funcs(fns)
 	tplGoInterface, err := ioutil.ReadFile(TEMPLATES_DIR + tplName)
 	noErr(err)
 	tpl, err = tpl.Parse(string(tplGoInterface))
