@@ -1,9 +1,15 @@
 package x
 
+import "ms/sun/helper"
+
 {{range .Messages}}
 type {{.Name}}_Flat struct {
 {{- range .Fields}}
+{{if .Repeated}}
+{{.FieldName}} []{{.GoFlatType}}
+{{else}}
 {{.FieldName}} {{.GoFlatType}}
+{{end}}
 {{- end}}
 }
 {{end}}
@@ -14,8 +20,8 @@ type {{.Name}}_Flat struct {
 func(m *{{.Name}})ToFlat() *{{.Name}}_Flat {
 r := &{{.Name}}_Flat{
 {{- range.Fields}}
-    {{if IsPBPrimateTypes  .TypeName}}
-        {{- .FieldName}}:  {{tPBTypeToGoFlatType .FieldName .TypeName  "m"}} ,
+    {{if tIsPBPrimateTypes  .TypeName}}
+        {{- .FieldName}}:  {{tPBTypeToGoFlatType . "m"}} ,
     {{- end -}}
 {{- end}}
 }
@@ -29,9 +35,9 @@ return r
 func(m *{{.Name}}_Flat)ToPB() *{{.Name}} {
 r := &{{.Name}}{
 {{- range.Fields}}
-{{if IsPBPrimateTypes  .TypeName}}
-{{- .FieldName}}:  {{tFlatTypeToGoPBType .FieldName .TypeName  "m"}} ,
-{{- end -}}
+    {{if tIsPBPrimateTypes  .TypeName}}
+        {{- .FieldName}}:  {{tFlatTypeToGoPBType2 . "m"}} ,
+    {{- end -}}
 {{- end}}
 }
 return r

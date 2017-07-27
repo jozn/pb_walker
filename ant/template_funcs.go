@@ -1,16 +1,18 @@
 package ant
 
 import (
+	"strings"
 	"text/template"
 )
 
 var fns = template.FuncMap{
-	"IsPBPrimateTypes":    IsPBPrimateTypes,
-	"tPBTypeToGoFlatType": tPBTypeToGoFlatType,
-	"tFlatTypeToGoPBType": tFlatTypeToGoPBType,
+	"tIsPBPrimateTypes":    tIsPBPrimateTypes,
+	"tPBTypeToGoFlatType":  tPBTypeToGoFlatType,
+	"tFlatTypeToGoPBType":  tFlatTypeToGoPBType,
+	"tFlatTypeToGoPBType2": tFlatTypeToGoPBType2,
 }
 
-func IsPBPrimateTypes(pbType string) bool {
+func tIsPBPrimateTypes(pbType string) bool {
 	r := false
 	switch pbType {
 	case "int64", "sint64", "int32",
@@ -31,17 +33,43 @@ func IsPBPrimateTypes(pbType string) bool {
 	return r
 }
 
-func tPBTypeToGoFlatType(field, pbType, fieldPerifx string) string {
+func tPBTypeToGoFlatType(field FieldView, fieldPerifx string) string {
 	r := ""
-	flatSr := pbTypesToGoFlatTypes(pbType)
-	if pbType == flatSr {
-		r = fieldPerifx + "." + field
+	flatSr := pbTypesToGoFlatTypes(field.TypeName)
+	if field.TypeName == flatSr {
+		r = fieldPerifx + "." + field.FieldName
 	} else {
-		r = flatSr + "(" + fieldPerifx + "." + field + ")"
+		if field.Repeated {
+			m := "helper.Slice" + strings.Title(field.TypeName) + "To" + strings.Title(flatSr)
+			r = m + "(" + fieldPerifx + "." + field.FieldName + ")"
+		} else {
+			r = flatSr + "(" + fieldPerifx + "." + field.FieldName + ")"
+		}
 	}
 
 	return r
 }
+
+func tFlatTypeToGoPBType2(field FieldView, fieldPerifx string) string {
+	r := ""
+
+	flatSr := pbTypesToGoFlatTypes(field.TypeName)
+	goSr := pbTypesToGoType(field.TypeName)
+	if goSr == flatSr {
+		r = fieldPerifx + "." + field.FieldName
+	} else {
+		if field.Repeated {
+			m := "helper.Slice" + strings.Title(flatSr) + "To" + strings.Title(goSr)
+			r = m + "(" + fieldPerifx + "." + field.FieldName + ")"
+		} else {
+			r = goSr + "(" + fieldPerifx + "." + field.FieldName + ")"
+		}
+	}
+
+	return r
+}
+
+//////////////////////// Deprecated //////////////////
 
 func tFlatTypeToGoPBType(field, pbType, fieldPerifx string) string {
 	r := ""
