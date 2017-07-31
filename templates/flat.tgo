@@ -5,11 +5,11 @@ import "ms/sun/helper"
 {{range .Messages}}
 type {{.Name}}_Flat struct {
 {{- range .Fields}}
-{{if .Repeated}}
-{{.FieldName}} []{{.GoFlatType}}
-{{else}}
-{{.FieldName}} {{.GoFlatType}}
-{{end}}
+    {{- if .Repeated}}
+    {{.FieldName}} []{{.GoFlatType}}
+    {{- else -}}
+    {{.FieldName}} {{.GoFlatType}}
+    {{end}}
 {{- end}}
 }
 {{end}}
