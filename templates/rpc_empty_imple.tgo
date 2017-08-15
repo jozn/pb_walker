@@ -1,0 +1,18 @@
+package x
+
+/////////////// Empty Sample RPC - mainly for mocking ////////////////
+{{range .Services}}
+{{$rpc := (printf "EmptyRPC_%s"  .Name)  }}
+
+/////////////////// {{.Name}}  -  {{$rpc}} /////////////////////
+type {{$rpc}} int
+var Empty_RPC_{{.Name}}_Sample = {{$rpc}}(0)
+
+{{ range .Methods}}
+    func ({{$rpc}}){{.MethodName}}(i *{{.InTypeName}}, p RPC_UserParam ) (*{{.OutTypeName}} ,error){
+    return nil,nil
+}
+{{- end}}
+
+{{end}}
+

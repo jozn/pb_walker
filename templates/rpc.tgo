@@ -14,7 +14,7 @@ type RPC_UserParam interface {
 }
 
 type RPC_ResponseHandlerInterface interface {
-    HandleOfflineResult(interface{}, PB_CommandToServer, RPC_UserParam)
+    HandleOfflineResult(dataPB interface{},PBClass string,cmd PB_CommandToServer,p RPC_UserParam)
     IsUserOnlineResult(interface{}, error)
     HandelError(error)
 }
@@ -56,6 +56,7 @@ func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_All
     switch splits[0] {
 {{range .Services}}
     case "{{.Name}}":
+            {{$rpcName := .Name }}
             rpc,ok := rpcHandler.({{.Name}})
             if !ok {
                 e:=errors.New("rpcHandler could not be cast to : {{.Name}}")
@@ -72,17 +73,30 @@ func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_All
                     if err == nil {
                         res, err := rpc.{{.MethodName}}(load,params)
                         if err == nil {
-                            RPC_ResponseHandler.HandelError(err)
+                            RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}",cmd, params)
                         }else{
-                            RPC_ResponseHandler.HandleOfflineResult(res,cmd, params)
+                            RPC_ResponseHandler.HandelError(err)
                         }
                     }else{
                      RPC_ResponseHandler.HandelError(err)
                     }
             {{- end}}
+                default:
+                    noDevErr(errors.New("rpc method is does not exist: "+cmd.Command))
             }
 {{- end}}
     default:
-    noDevErr(errors.New("HandleRpcs: splic is not 2 parts"))
+    noDevErr(errors.New("rpc dosent exisit for: "+cmd.Command))
 }
 }
+
+/////////////// Direct in PB_CommandToClient /////////////
+/*
+{{range .Services}}
+{{$ser := .Name}}
+{{- range .Methods}}
+ {{$ser}}.{{.MethodName}}
+{{- end}}
+
+{{end}}
+*/

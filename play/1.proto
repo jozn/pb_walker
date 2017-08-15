@@ -1,7 +1,5 @@
-// Just the basics
-
 syntax = "proto3";
-package proto;
+//package proto;
 //import "Request.proto";
 //import "Response.proto";
 
@@ -36,10 +34,10 @@ service gg {
 
 
 enum Corpus {
-    option usas = "dusage2";
+    //option usas = "dusage2";
     UNIVERSAL = 0;
     WEB = 1;
-    IMAGES = 2;
+    IMAGES = 2  [optionsssssssssssssssss = trued  ];
     LOCAL = 3;
     NEWS = 4;
     PRODUCTS = 5;

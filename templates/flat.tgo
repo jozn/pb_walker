@@ -7,7 +7,7 @@ type {{.Name}}_Flat struct {
 {{- range .Fields}}
     {{- if .Repeated}}
     {{.FieldName}} []{{.GoFlatType}}
-    {{- else -}}
+    {{- else }}
     {{.FieldName}} {{.GoFlatType}}
     {{end}}
 {{- end}}

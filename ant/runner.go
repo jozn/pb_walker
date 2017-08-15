@@ -10,7 +10,8 @@ import (
 )
 
 const OUTPUT_DIR = `C:\Go\_gopath\src\ms\sun\models\x\` //"./play/gen_sample_out.go"
-const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
+//const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
+const TEMPLATES_DIR = `C:\Go\_gopath\src\ms\ant/templates/`                    //relative to main func of parent directory
 
 func Run() {
 	const DIR_PROTOS = `C:\Go\_gopath\src\ms\sun\models\protos`
@@ -33,11 +34,16 @@ func Run() {
 	build(gen)
 
 	/////////// commeant albe ///
-	os.Chdir(`C:\Go\_gopath\src\ms\sun\scripts\`)
+	/*os.Chdir(`C:\Go\_gopath\src\ms\sun\scripts\`)
 	err = exec.Command(`C:\Go\_gopath\src\ms\sun\scripts\gen_pb.exe`).Run()
 	noErr(err)
-	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()
-	noErr(err)
+	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()*/
+	//noErr(err)
 
 	////
+}
+
+func alaki() {
+	exec.Command(``).Run()
+	os.Chdir(``)
 }
