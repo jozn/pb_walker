@@ -30,7 +30,7 @@ type FieldView struct {
 	TagNumber  int
 	GoType     string
 	GoFlatType string
-	javaType   string
+	JavaType   string
 }
 
 ////////// Enums /////////

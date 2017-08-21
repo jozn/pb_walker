@@ -16,10 +16,14 @@ func build(gen *GenOut) {
 
 	writeOutput("pb__gen_enum.proto", buildFromTemplate("enums.proto", gen))
 	writeOutput("RPC_INTERFACES.java", buildFromTemplate("RPC_INTERFACES.java", gen))
+	writeOutput("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
 	writeOutput("flat.go", buildFromTemplate("flat.tgo", gen))
 
-	/////// Enums /////////////////
+    //////////////// For Android /////////////
+    writeOutputAndroid("RPC_INTERFACES.java", buildFromTemplate("RPC_INTERFACES.java", gen))
+    writeOutputAndroid("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
 
+	/////// Enums /////////////////
 }
 
 func buildFromTemplate(tplName string, gen *GenOut) string {
@@ -39,4 +43,8 @@ func buildFromTemplate(tplName string, gen *GenOut) string {
 
 func writeOutput(fileName, output string) {
 	ioutil.WriteFile(OUTPUT_DIR+fileName, []byte(output), os.ModeType)
+}
+
+func writeOutputAndroid(fileName, output string) {
+    ioutil.WriteFile(OUTPUT_ANDROID_DIR_+fileName, []byte(output), os.ModeType)
 }

@@ -10,6 +10,7 @@ import (
 )
 
 const OUTPUT_DIR = `C:\Go\_gopath\src\ms\sun\models\x\` //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_DIR_ = `D:\dev_working2\MS_Native\app\src\main\java\ir\ms\pb\` //"./play/gen_sample_out.go"
 //const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
 const TEMPLATES_DIR = `C:\Go\_gopath\src\ms\ant/templates/`                    //relative to main func of parent directory
 

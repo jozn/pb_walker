@@ -47,7 +47,7 @@ func ExtractAllMessagesViews(pbFilesSet *ast.FileSet) []MessageView {
 					TagNumber:  f.Tag,
 					GoType:     pbTypesToGoType(f.TypeName),
 					GoFlatType: pbTypesToGoFlatTypes(f.TypeName),
-					javaType:   pbTypesToJavaType(f.TypeName),
+					JavaType:   pbTypesToJavaType(f.TypeName),
 				}
 				msgView.Fields = append(msgView.Fields, mv)
 			}
