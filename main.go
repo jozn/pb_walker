@@ -1,6 +1,6 @@
 package main
 
-import "ms/ant/ant"
+import "ms/ants/ant"
 
 //////////////////////////
 
