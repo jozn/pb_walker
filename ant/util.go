@@ -82,16 +82,16 @@ func pbTypesToJavaType(tp string) string {
 	case "int64", "sint64",
 		"uint64", "fixed64",
 		"sfixed64":
-		s = "int"
+		s = "long"
 	case "double":
-		s = "float64"
+		s = "double"
 	case "float":
-		s = "float32"
+		s = "float"
 
 	case "bool":
-		s = "bool"
+		s = "boolean"
 	case "string":
-		s = "string"
+		s = "String"
 	case "bytes":
 		s = "byte[]"
 	}
