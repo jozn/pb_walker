@@ -41,6 +41,7 @@ func Run() {
 	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()*/
 	//noErr(err)
 
+    err = exec.Command("javafmt").Run()
 	////
 }
 

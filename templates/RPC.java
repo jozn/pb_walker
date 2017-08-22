@@ -3,7 +3,7 @@ package ir.ms.pb;
 import com.mardomsara.social.pipe.*;
 import android.util.Log;
 
-public class RPC_Handler {
+public class RPC {
 {{range .Services}}
 public static class {{.Name}} {
 	{{$SName := .Name }}
@@ -25,7 +25,7 @@ public static class {{.Name}} {
 						{{.OutTypeName}} d ={{.OutTypeName}}.parseFrom(data);
 						resultHandler.onResult(d);
 					}catch (com.google.protobuf.InvalidProtocolBufferException e){
-						Log.d("RPC", "parsing protcol buffer is faild: {{.OutTypeName}}");
+						Log.d("RPC", "parsing protocol buffer is faild: {{.OutTypeName}}");
 					}
 				}
 			};
