@@ -1,4 +1,4 @@
-package ir.ms.pb
+package ir.ms.pb;
 
 public class PBFlatTypes {
 {{range .Messages}}

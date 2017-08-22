@@ -22,6 +22,7 @@ func build(gen *GenOut) {
     //////////////// For Android /////////////
     writeOutputAndroid("RPC_INTERFACES.java", buildFromTemplate("RPC_INTERFACES.java", gen))
     writeOutputAndroid("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
+    writeOutputAndroid("RPC_Handler.java", buildFromTemplate("RPC_Handler.java", gen))
 
 	/////// Enums /////////////////
 }

@@ -1,10 +1,10 @@
-package ir.ms.pb
+package ir.ms.pb;
 
 public class RPC_INTERFACES {
 {{range .Services}}
 public interface {{.Name}} {
   {{- range .Methods}}
-    {{.MethodName}}( {{.OutTypeName}} );
+    void {{.MethodName}}( {{.OutTypeName}} pbOut);
   {{- end -}}
 }
 {{- end}}
