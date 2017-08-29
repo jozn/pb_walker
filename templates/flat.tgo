@@ -9,12 +9,43 @@ type {{.Name}}_Flat struct {
     {{.FieldName}} []{{.GoFlatType}}
     {{- else }}
     {{.FieldName}} {{.GoFlatType}}
-    {{end}}
+    {{- end}}
 {{- end}}
 }
+//ToPB
+func(m *{{.Name}})ToFlat() *{{.Name}}_Flat {
+r := &{{.Name}}_Flat{
+{{- range.Fields}}
+    {{if tIsPBPrimateTypes  .TypeName}}
+        {{- .FieldName}}:  {{tPBTypeToGoFlatType . "m"}} ,
+    {{- end -}}
+{{- end}}
+}
+return r
+}
+//ToPB
+func(m *{{.Name}}_Flat)ToPB() *{{.Name}} {
+r := &{{.Name}}{
+{{- range.Fields}}
+    {{if tIsPBPrimateTypes  .TypeName}}
+        {{- .FieldName}}:  {{tFlatTypeToGoPBType2 . "m"}} ,
+    {{- end -}}
+{{- end}}
+}
+return r
+}
+//folding
+var {{.Name}}__FOlD = &{{.Name}}{
+{{- range.Fields}}
+    {{if tIsPBPrimateTypes  .TypeName}}
+        {{- .FieldName}}:  {{tDefaultGoStructValue . }} ,
+    {{- end -}}
+{{- end}}
+}
+
 {{end}}
 
-
+/*
 ///// to_flat ///
 {{range .Messages}}
 func(m *{{.Name}})ToFlat() *{{.Name}}_Flat {
@@ -43,3 +74,18 @@ r := &{{.Name}}{
 return r
 }
 {{end}}
+
+
+///// folding ///
+{{range .Messages}}
+var {{.Name}}__FOlD = &{{.Name}}{
+    {{- range.Fields}}
+        {{if tIsPBPrimateTypes  .TypeName}}
+            {{- .FieldName}}:  {{tDefaultGoStructValue . }} ,
+        {{- end -}}
+    {{- end}}
+}
+
+{{end}}
+
+*/

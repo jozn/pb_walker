@@ -7,9 +7,17 @@ public class PBFlatTypes {
 	   public {{.JavaType}} {{.FieldName}};
 	  {{- end }}
 	}
+	/*
+	folding
+	PBFlatTypes.{{.Name}} t = new PBFlatTypes.{{.Name}}();
+	{{- range .Fields}}
+    t.set{{.FieldName}}();
+    {{- end }}
+	*/
 {{end}}
 	
 }
+
 /*
 {{range .Services}}
 RPC_INTERFACES.{{.Name}} {{.Name}}_Handeler = null;
