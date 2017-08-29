@@ -38,7 +38,10 @@ return r
 var {{.Name}}__FOlD = &{{.Name}}{
 {{- range.Fields}}
     {{if tIsPBPrimateTypes  .TypeName}}
-        {{- .FieldName}}:  {{tDefaultGoStructValue . }} ,
+        {{- if .Repeated -}}
+        {{- else }}
+            {{- .FieldName}}:  {{tDefaultGoStructValue . }} ,
+        {{- end}}
     {{- end -}}
 {{- end}}
 }
