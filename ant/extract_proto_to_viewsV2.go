@@ -5,6 +5,7 @@ import (
 	"github.com/emicklei/proto"
 	"ms/sun/helper"
 	"os"
+	"strings"
 )
 
 func ExtractAllServicesViewsV2(protos []*proto.Proto) []ServiceView {
@@ -137,6 +138,17 @@ func protoOptionsToOptionsView(options []*proto.Option) (res []OptionsView) {
 	return
 }
 
+//////////////////////////////////////////////////////////////////////////////
+func GetAllARealmMessageViews(msgs []MessageView) (res []MessageView) {
+	for _, m := range msgs {
+		for _, opt := range m.Options {
+			if strings.ToLower(opt.OptionName) == REALM {
+				res = append(res, m)
+			}
+		}
+	}
+	return
+}
 func xxx() {
 
 	reader, _ := os.Open(`C:\Go\_gopath\src\ms\ants\play\1.proto`)
@@ -177,6 +189,5 @@ func xxx() {
 	}
 	helper.PertyPrint(messageViews)
 	helper.PertyPrint(def)
-
 
 }

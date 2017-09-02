@@ -19,6 +19,8 @@ const OUTPUT_ANDROID_DIR_ = `D:\dev_working2\MS_Native\app\src\main\java\ir\ms\p
 const TEMPLATES_DIR = `C:\Go\_gopath\src\ms\ants/templates/` //relative to main func of parent directory
 const DIR_PROTOS = `C:\Go\_gopath\src\ms\sun\models\protos`
 
+const REALM  = "realm"
+
 func Run() {
 	xxx()
 	files, err := ioutil.ReadDir(DIR_PROTOS)
@@ -74,9 +76,10 @@ func RunV2() {
 		Services: ExtractAllServicesViewsV2(prtos),
 		Enums:    ExtractAllEnumsViewsV2(prtos),
 	}
+    gen.Realms = GetAllARealmMessageViews(gen.Messages)
 
     print("===========================================")
-    helper.PertyPrint(gen.Messages)
+    helper.PertyPrint(gen.Realms)
     //helper.PertyPrint(prtos)
 
 	build(gen)

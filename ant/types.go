@@ -67,6 +67,8 @@ type GenOut struct {
 	Messages []MessageView
 	Enums    []EnumView
 
+	Realms []MessageView
+
 	OutGoEnumsStr string
 	OutGoRPCsStr  string
 	OutJavaStr    string
