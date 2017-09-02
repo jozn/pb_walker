@@ -20,10 +20,11 @@ type MethodView struct {
 ////////// Messages /////////
 
 type MessageView struct {
-	Name    string
-	Fields  []FieldView
-	Comment string
-	Options []OptionsView
+	Name       string
+	Fields     []FieldView
+	Comment    string
+	Options    []OptionsView
+	RealmClass string
 }
 
 type FieldView struct {

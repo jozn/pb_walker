@@ -21,6 +21,9 @@ const DIR_PROTOS = `C:\Go\_gopath\src\ms\sun\models\protos`
 
 const REALM  = "realm"
 
+const OUTPUT_ANDROID_REALM_DIR_ = `D:\dev_working2\MS_Native\app\src\main\java\com\mardomsara\social\models_realm\pb_realm\`
+
+
 func Run() {
 	xxx()
 	files, err := ioutil.ReadDir(DIR_PROTOS)
@@ -79,7 +82,7 @@ func RunV2() {
     gen.Realms = GetAllARealmMessageViews(gen.Messages)
 
     print("===========================================")
-    helper.PertyPrint(gen.Realms)
+    //helper.PertyPrint(gen.Realms)
     //helper.PertyPrint(prtos)
 
 	build(gen)
