@@ -17,6 +17,7 @@ func ExtractAllServicesViewsV2(protos []*proto.Proto) []ServiceView {
 					Name:    ser.Name,
 					Comment: findCommentV2(ser.Comment),
 					Hash:    Hash32(ser.Name),
+					Options: extractElementOptions(ser.Elements),
 				}
 
 				for _, m2 := range ser.Elements {
@@ -47,6 +48,7 @@ func ExtractAllMessagesViewsV2(protos []*proto.Proto) []MessageView {
 				msgView := MessageView{
 					Name:    msg.Name,
 					Comment: findCommentV2(msg.Comment),
+					Options: extractElementOptions(msg.Elements),
 				}
 
 				for _, f2 := range msg.Elements {
@@ -59,6 +61,7 @@ func ExtractAllMessagesViewsV2(protos []*proto.Proto) []MessageView {
 							GoType:     pbTypesToGoType(f.Type),
 							GoFlatType: pbTypesToGoFlatTypes(f.Type),
 							JavaType:   pbTypesToJavaType(f.Type),
+							Options:    protoOptionsToOptionsView(f.Options),
 						}
 						msgView.Fields = append(msgView.Fields, mv)
 					}
@@ -80,6 +83,7 @@ func ExtractAllEnumsViewsV2(protos []*proto.Proto) []EnumView {
 				enumView := EnumView{
 					Name:    enum.Name,
 					Comment: findCommentV2(enum.Comment),
+					Options: extractElementOptions(enum.Elements),
 				}
 
 				pos := 0
@@ -103,8 +107,34 @@ func ExtractAllEnumsViewsV2(protos []*proto.Proto) []EnumView {
 }
 
 func findCommentV2(com *proto.Comment) string {
-
+	if com != nil && len(com.Lines) > 0 {
+		return com.Lines[len(com.Lines)-1]
+	}
 	return ""
+}
+
+func extractElementOptions(element []proto.Visitee) (res []OptionsView) {
+	for _, el := range element {
+		if option, ok := el.(*proto.Option); ok {
+			v := OptionsView{
+				OptionName:  option.Name,
+				OptionValue: option.Constant.Source,
+			}
+			res = append(res, v)
+		}
+	}
+	return
+}
+
+func protoOptionsToOptionsView(options []*proto.Option) (res []OptionsView) {
+	for _, option := range options {
+		v := OptionsView{
+			OptionName:  option.Name,
+			OptionValue: option.Constant.Source,
+		}
+		res = append(res, v)
+	}
+	return
 }
 
 func xxx() {
@@ -148,86 +178,5 @@ func xxx() {
 	helper.PertyPrint(messageViews)
 	helper.PertyPrint(def)
 
-	/*def.Elements[0].Accept(&vv{})
-	formatter := proto.NewFormatter(os.Stdout, " ")
 
-	formatter.Format(def)*/
-
-}
-
-type vv struct {
-}
-
-func (m *vv) VisitMessage(m1 *proto.Message) {
-	print("VisitMessage me")
-}
-
-func (m *vv) VisitService(v *proto.Service) {
-	print("VisitService me")
-}
-
-func (m *vv) VisitSyntax(s *proto.Syntax) {
-	print("VisitSyntax me")
-	print(s.Comment)
-	print(s.InlineComment)
-	print(s.Value)
-
-	s.Accept(m)
-
-}
-
-func (m *vv) VisitPackage(p *proto.Package) {
-	print("VisitPackage me")
-}
-
-func (m *vv) VisitOption(o *proto.Option) {
-	print("VisitOption me")
-}
-
-func (m *vv) VisitImport(i *proto.Import) {
-	print("VisitImport me")
-}
-
-func (m *vv) VisitNormalField(i *proto.NormalField) {
-	print("VisitNormalField me")
-}
-
-func (m *vv) VisitEnumField(i *proto.EnumField) {
-	print("implement me")
-}
-
-func (m *vv) VisitEnum(e *proto.Enum) {
-	print("VisitEnum me")
-}
-
-func (m *vv) VisitComment(e *proto.Comment) {
-	print("VisitComment me")
-}
-
-func (m *vv) VisitOneof(o *proto.Oneof) {
-	print("VisitOneof me")
-}
-
-func (m *vv) VisitOneofField(o *proto.OneOfField) {
-	print("VisitOneofField me")
-}
-
-func (m *vv) VisitReserved(r *proto.Reserved) {
-	print("VisitReserved me")
-}
-
-func (m *vv) VisitRPC(r *proto.RPC) {
-	print("VisitRPC me")
-}
-
-func (m *vv) VisitMapField(f *proto.MapField) {
-	print("VisitMapField me")
-}
-
-func (m *vv) VisitGroup(g *proto.Group) {
-	print("VisitGroup me")
-}
-
-func (m *vv) VisitExtensions(e *proto.Extensions) {
-	print("VisitExtensions me")
 }

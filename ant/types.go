@@ -6,6 +6,7 @@ type ServiceView struct {
 	Methods []MethodView
 	Comment string
 	Hash    int32
+	Options []OptionsView
 }
 
 type MethodView struct {
@@ -13,6 +14,7 @@ type MethodView struct {
 	InTypeName  string
 	OutTypeName string
 	Hash        int32
+	Options     []OptionsView
 }
 
 ////////// Messages /////////
@@ -21,6 +23,7 @@ type MessageView struct {
 	Name    string
 	Fields  []FieldView
 	Comment string
+	Options []OptionsView
 }
 
 type FieldView struct {
@@ -31,6 +34,7 @@ type FieldView struct {
 	GoType     string
 	GoFlatType string
 	JavaType   string
+	Options    []OptionsView
 }
 
 ////////// Enums /////////
@@ -39,12 +43,20 @@ type EnumView struct {
 	Name    string
 	Fields  []EnumFieldView
 	Comment string
+	Options []OptionsView
 }
 
 type EnumFieldView struct {
 	FieldName string
 	TagNumber int
 	PosNumber int
+	Options   []OptionsView
+}
+
+/////////// Tag /////////
+type OptionsView struct {
+	OptionName  string
+	OptionValue string
 }
 
 /////////////////////////////////////////

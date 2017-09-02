@@ -75,6 +75,10 @@ func RunV2() {
 		Enums:    ExtractAllEnumsViewsV2(prtos),
 	}
 
+    print("===========================================")
+    helper.PertyPrint(gen.Messages)
+    //helper.PertyPrint(prtos)
+
 	build(gen)
 
 	/////////// commeant albe ///
