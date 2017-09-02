@@ -18,6 +18,7 @@ enum Device {
 //good to
 //have you
 message ChannelCreateResponse {
+    option java_outer_classname = 1;
 //    Response response = 1;
    ChannelCreate CCC = 1;
     uint64 room_id = 2;

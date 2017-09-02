@@ -14,6 +14,20 @@ public class PBFlatTypes {
     t.set{{.FieldName}}();
     {{- end }}
 	*/
+
+	/*
+	PBFlatTypes.{{.Name}} t = new PBFlatTypes.{{.Name}}();
+	{{- range .Fields}}
+	t.{{.FieldName}} = ;
+	{{- end }}
+	*/
+
+	/*
+	{{.Name}} t = new {{.Name}}();
+	{{- range .Fields}}
+	t.{{.FieldName}} = m.get{{.FieldName}}() ;
+	{{- end }}
+	*/
 {{end}}
 	
 }

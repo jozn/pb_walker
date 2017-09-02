@@ -5,5 +5,5 @@ import "ms/ants/ant"
 //////////////////////////
 
 func main() {
-	ant.Run()
+	ant.RunV2()
 }
