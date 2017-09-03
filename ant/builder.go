@@ -16,12 +16,12 @@ func build(gen *GenOut) {
 	writeOutput("pb__gen_ant_empty.go", OutGoRPCsEmptyStr)
 
 	writeOutput("pb__gen_enum.proto", buildFromTemplate("enums.proto", gen))
-	writeOutput("RPC_INTERFACES.java", buildFromTemplate("RPC_INTERFACES.java", gen))
+	writeOutput("RPC_HANDLERS.java", buildFromTemplate("RPC_HANDLERS.java", gen))
 	writeOutput("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
 	writeOutput("flat.go", buildFromTemplate("flat.tgo", gen))
 
 	//////////////// For Android /////////////
-	writeOutputAndroid("RPC_INTERFACES.java", buildFromTemplate("RPC_INTERFACES.java", gen))
+	writeOutputAndroid("RPC_HANDLERS.java", buildFromTemplate("RPC_HANDLERS.java", gen))
 	writeOutputAndroid("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
 	writeOutputAndroid("RPC.java", buildFromTemplate("RPC.java", gen))
 	writeOutputAndroid("RPC_ResponseBase.java", buildFromTemplate("RPC_ResponseBase.java", gen))

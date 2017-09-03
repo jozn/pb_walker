@@ -10,40 +10,43 @@ public class {{.RealmClass}} extends RealmObject {
    {{- range $i ,$el := .Fields }}
 		{{if (eq $pk  $el.FieldName ) }} @PrimaryKey 
 		{{ end -}}
-	public {{$el.JavaType}} {{$el.FieldName }}; 			//{{$i}}  PB {{$el.TagNumber}}
+	public {{$el.JavaType}} {{$el.FieldName }};//{{$i}} 				 PB {{$el.TagNumber}}
    {{- end }}
 	
 
 	public static {{.RealmClass}} fromPB({{.Name}} pb){
-		{{.RealmClass}} t = new {{.RealmClass}}();
-		{{ range .Fields}}
-	    t.{{.FieldName}} = pb.get{{.FieldName}}();
+		{{.RealmClass}} r = new {{.RealmClass}}();
+		{{ range $i ,$el :=  .Fields}}
+	    r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
 	    {{- end }}
 
-	    return t;
+	    return r;
 	}
 
 }
 	/*
 	folding
 
-	PBFlatTypes.{{.Name}} t = new PBFlatTypes.{{.Name}}();
-	{{- range .Fields}}
-    t.{{.FieldName}} = pb.get{{.FieldName}}();
-    {{- end }}
-	*/
-
-	/*
-	PBFlatTypes.{{.Name}} t = new PBFlatTypes.{{.Name}}();
-	{{- range .Fields}}
-	t.{{.FieldName}} = ;
+	//sett
+	{{.RealmClass}} r = new {{.RealmClass}}();
+	{{ range $i ,$el :=  .Fields}}
+	r.{{$el.FieldName}} = ;//{{$i}}
 	{{- end }}
-	*/
 
-	/*
-	{{.Name}} t = new {{.Name}}();
-	{{- range .Fields}}
-	t.{{.FieldName}} = m.get{{.FieldName}}() ;
+	//sett - no tag number 
+	{{.RealmClass}} r = new {{.RealmClass}}();
+	{{ range $i ,$el :=  .Fields}}
+	r.{{$el.FieldName}} = ;
+	{{- end }}
+
+	//get
+	{{ range $i ,$el :=  .Fields}}
+	m. = r.{{$el.FieldName}} ;//{{$i}}
+	{{- end }}
+
+	//get - no tag number
+	{{ range $i ,$el :=  .Fields}}
+	m. = r.{{$el.FieldName}} ;
 	{{- end }}
 	
 */
