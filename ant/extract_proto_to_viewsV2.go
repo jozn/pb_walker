@@ -149,6 +149,17 @@ func GetAllARealmMessageViews(msgs []MessageView) (res []MessageView) {
 	}
 	return
 }
+
+// pb meassages with  {realm} - GetAllARealmMessageViews() dosn't works with proto.exe it jus fails
+func GetAllARealmMessageViews_FromComments(msgs []MessageView) (res []MessageView) {
+	for _, m := range msgs {
+		if strings.Contains(strings.ToLower(m.Comment), "{realm}") {
+			res = append(res, m)
+		}
+	}
+	return
+}
+
 func xxx() {
 
 	reader, _ := os.Open(`C:\Go\_gopath\src\ms\ants\play\1.proto`)

@@ -79,10 +79,11 @@ func RunV2() {
 		Services: ExtractAllServicesViewsV2(prtos),
 		Enums:    ExtractAllEnumsViewsV2(prtos),
 	}
-    gen.Realms = GetAllARealmMessageViews(gen.Messages)
+    //gen.Realms = GetAllARealmMessageViews(gen.Messages)
+    gen.Realms = GetAllARealmMessageViews_FromComments(gen.Messages)
 
     print("===========================================")
-    //helper.PertyPrint(gen.Realms)
+    //helper.PertyPrint(gen.Messages)
     //helper.PertyPrint(prtos)
 
 	build(gen)
