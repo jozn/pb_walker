@@ -10,14 +10,18 @@ public class {{.RealmClass}} extends RealmObject {
    {{- range $i ,$el := .Fields }}
 		{{if (eq $pk  $el.FieldName ) }} @PrimaryKey 
 		{{ end -}}
-	public {{$el.JavaType}} {{$el.FieldName }};//{{$i}} 				 PB {{$el.TagNumber}}
+	public {{$el.RealmTypeName}} {{$el.FieldName }};//{{$i}} 				 PB {{$el.TagNumber}}
    {{- end }}
 	
 
 	public static {{.RealmClass}} fromPB({{.Name}} pb){
 		{{.RealmClass}} r = new {{.RealmClass}}();
 		{{ range $i ,$el :=  .Fields}}
-	    r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
+		{{if (fIsRealmType $el) -}}
+	    //r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
+	    {{- else -}}
+	     r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
+	    {{- end}}
 	    {{- end }}
 
 	    return r;

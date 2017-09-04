@@ -63,6 +63,7 @@ func ExtractAllMessagesViewsV2(protos []*proto.Proto) []MessageView {
 							GoFlatType: pbTypesToGoFlatTypes(f.Type),
 							JavaType:   pbTypesToJavaType(f.Type),
 							Options:    protoOptionsToOptionsView(f.Options),
+                            RealmTypeName: pbToRealmName(pbTypesToJavaType(f.Type)),
 						}
 						msgView.Fields = append(msgView.Fields, mv)
 					}

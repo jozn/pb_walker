@@ -6,11 +6,12 @@ import (
 )
 
 var fns = template.FuncMap{
-	"tIsPBPrimateTypes":    tIsPBPrimateTypes,
-	"tPBTypeToGoFlatType":  tPBTypeToGoFlatType,
-	"tFlatTypeToGoPBType":  tFlatTypeToGoPBType,
-	"tFlatTypeToGoPBType2": tFlatTypeToGoPBType2,
+	"tIsPBPrimateTypes":     tIsPBPrimateTypes,
+	"tPBTypeToGoFlatType":   tPBTypeToGoFlatType,
+	"tFlatTypeToGoPBType":   tFlatTypeToGoPBType,
+	"tFlatTypeToGoPBType2":  tFlatTypeToGoPBType2,
 	"tDefaultGoStructValue": tDefaultGoStructValue,
+	"fIsRealmType": fIsRealmType,
 }
 
 func tIsPBPrimateTypes(pbType string) bool {
@@ -70,26 +71,30 @@ func tFlatTypeToGoPBType2(field FieldView, fieldPerifx string) string {
 	return r
 }
 
-func tDefaultGoStructValue(field FieldView) string {
-    s := "0"
-    switch field.TypeName {
-    case "int64", "sint64", "int32",
-        "sint32", "uint32", "uint64", "fixed32",
-        "fixed64", "sfixed32", "sfixed64":
-        s = "0"
-    case "double":
-        s = "0.0"
-    case "float":
-        s = "0.0"
+func fIsRealmType(field FieldView) bool {
+	return strings.Contains(strings.ToLower(field.RealmTypeName), "realm")
+}
 
-    case "bool":
-        s = "false"
-    case "string":
-        s = `""`
-    case "bytes":
-        s = "[]byte{}"
-    }
-    return s
+func tDefaultGoStructValue(field FieldView) string {
+	s := "0"
+	switch field.TypeName {
+	case "int64", "sint64", "int32",
+		"sint32", "uint32", "uint64", "fixed32",
+		"fixed64", "sfixed32", "sfixed64":
+		s = "0"
+	case "double":
+		s = "0.0"
+	case "float":
+		s = "0.0"
+
+	case "bool":
+		s = "false"
+	case "string":
+		s = `""`
+	case "bytes":
+		s = "[]byte{}"
+	}
+	return s
 }
 
 //////////////////////// Deprecated //////////////////
