@@ -13,15 +13,16 @@ import (
 	"path"
 )
 
-const OUTPUT_DIR = `C:\Go\_gopath\src\ms\sun\models\x\`                             //"./play/gen_sample_out.go"
-const OUTPUT_ANDROID_DIR_ = `D:\dev_working2\MS_Native\app\src\main\java\ir\ms\pb\` //"./play/gen_sample_out.go"
+const OUTPUT_DIR = `C:/Go/_gopath/src/ms/sun/models/x/`                                         //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:/dev_working2/MS_Native/proto/src/main/java/ir/ms/pb` //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_APP_DIR = `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb` //"./play/gen_sample_out.go"
 //const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
-const TEMPLATES_DIR = `C:\Go\_gopath\src\ms\ants/templates/` //relative to main func of parent directory
-const DIR_PROTOS = `C:\Go\_gopath\src\ms\sun\models\protos`
+const TEMPLATES_DIR = `C:/Go/_gopath/src/ms/ants/templates/` //relative to main func of parent directory
+const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun/models/protos`
 
 const REALM  = "realm"
 
-const OUTPUT_ANDROID_REALM_DIR_ = `D:\dev_working2\MS_Native\app\src\main\java\com\mardomsara\social\models_realm\pb_realm\`
+const OUTPUT_ANDROID_REALM_DIR_ = `D:/dev_working2/MS_Native/app/src/main/java/com/mardomsara/social/models_realm/pb_realm/`
 
 
 func Run() {
@@ -45,8 +46,8 @@ func Run() {
 	build(gen)
 
 	/////////// commeant albe ///
-	/*os.Chdir(`C:\Go\_gopath\src\ms\sun\scripts\`)
-	err = exec.Command(`C:\Go\_gopath\src\ms\sun\scripts\gen_pb.exe`).Run()
+	/*os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
+	err = exec.Command(`C:/Go/_gopath/src/ms/sun/scripts/gen_pb.exe`).Run()
 	noErr(err)
 	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()*/
 	//noErr(err)
@@ -69,7 +70,7 @@ func RunV2() {
 		parser := proto.NewParser(reader)
 		def, err := parser.Parse()
 		if err != nil {
-			log.Panic("error parsing proto: ", f.Name(), " ", err, "\n")
+			log.Panic("error parsing proto: ", f.Name(), " ", err, "/n")
 		}
 		prtos = append(prtos, def)
 	}
@@ -89,8 +90,8 @@ func RunV2() {
 	build(gen)
 
 	/////////// commeant albe ///
-	/*os.Chdir(`C:\Go\_gopath\src\ms\sun\scripts\`)
-	  err = exec.Command(`C:\Go\_gopath\src\ms\sun\scripts\gen_pb.exe`).Run()
+	/*os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
+	  err = exec.Command(`C:/Go/_gopath/src/ms/sun/scripts/gen_pb.exe`).Run()
 	  noErr(err)
 	  err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()*/
 	//noErr(err)

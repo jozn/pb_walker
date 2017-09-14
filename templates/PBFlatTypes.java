@@ -34,7 +34,7 @@ public class PBFlatTypes {
 
 /*
 {{range .Services}}
-RPC_INTERFACES.{{.Name}} {{.Name}}_Handeler = null;
+RPC_HANDLERS.{{.Name}} {{.Name}}_Handeler = null;
 {{- end}}
 	
 */

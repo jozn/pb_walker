@@ -21,15 +21,15 @@ func build(gen *GenOut) {
 	writeOutput("flat.go", buildFromTemplate("flat.tgo", gen))
 
 	//////////////// For Android /////////////
-	writeOutputAndroid("RPC_HANDLERS.java", buildFromTemplate("RPC_HANDLERS.java", gen))
-	writeOutputAndroid("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
-	writeOutputAndroid("RPC.java", buildFromTemplate("RPC.java", gen))
-	writeOutputAndroid("RPC_ResponseBase.java", buildFromTemplate("RPC_ResponseBase.java", gen))
+	writeOutputAndroidProto("RPC_HANDLERS.java", buildFromTemplate("RPC_HANDLERS.java", gen))
+	writeOutputAndroidProto("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
+	writeOutputAndroidApp("RPC.java", buildFromTemplate("RPC.java", gen))
+	writeOutputAndroidProto("RPC_ResponseBase.java", buildFromTemplate("RPC_ResponseBase.java", gen))
 
 	/////// Enums /////////////////
 
-    ////////// Realm /////////////
-    buildForRealms(gen.Realms)
+	////////// Realm /////////////
+	buildForRealms(gen.Realms)
 }
 
 func buildFromTemplate(tplName string, gen *GenOut) string {
@@ -51,8 +51,12 @@ func writeOutput(fileName, output string) {
 	ioutil.WriteFile(OUTPUT_DIR+fileName, []byte(output), os.ModeType)
 }
 
-func writeOutputAndroid(fileName, output string) {
-	ioutil.WriteFile(OUTPUT_ANDROID_DIR_+fileName, []byte(output), os.ModeType)
+func writeOutputAndroidProto(fileName, output string) {
+	ioutil.WriteFile(OUTPUT_ANDROID_PROTO_MOUDLE_DIR+fileName, []byte(output), os.ModeType)
+}
+
+func writeOutputAndroidApp(fileName, output string) {
+	ioutil.WriteFile(OUTPUT_ANDROID_APP_DIR+fileName, []byte(output), os.ModeType)
 }
 
 func buildForRealms(msgs []MessageView) {
@@ -75,7 +79,7 @@ func buildForRealms(msgs []MessageView) {
 	}
 
 	for klass, out := range buff {
-		ioutil.WriteFile(OUTPUT_ANDROID_REALM_DIR_+klass + ".java", []byte(out), os.ModeType)
+		ioutil.WriteFile(OUTPUT_ANDROID_REALM_DIR_+klass+".java", []byte(out), os.ModeType)
 	}
 }
 

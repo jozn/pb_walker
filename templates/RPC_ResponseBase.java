@@ -2,9 +2,9 @@ package ir.ms.pb;
 
 import android.util.Log;
 
-public class RPC_ResponseBase {
+public class RPC_ResponseBase {/*
 {{range .Services}}
-	public static class {{.Name}}_Base implements RPC_INTERFACES.{{.Name}}  {
+	public static class {{.Name}}_Base implements RPC_HANDLERS.{{.Name}}  {
 	  {{- $SName := .Name -}}
 	  {{ range .Methods}}
 		public void {{.MethodName}}( {{.OutTypeName}} pbOut){
@@ -13,11 +13,11 @@ public class RPC_ResponseBase {
 	  {{- end -}}
 	}
 {{- end}}
-	
+*/
 }
 /*
 {{range .Services}}
-RPC_INTERFACES.{{.Name}} {{.Name}}_Handeler = null;
+RPC_HANDLERS.{{.Name}} {{.Name}}_Handeler = null;
 {{- end}}
 	
 */

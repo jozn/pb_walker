@@ -4,7 +4,6 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import ir.ms.pb.*;
 
-
 {{$pk := (index .Fields 0).FieldName }}
 public class {{.RealmClass}} extends RealmObject {
    {{- range $i ,$el := .Fields }}
