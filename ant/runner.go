@@ -14,8 +14,8 @@ import (
 )
 
 const OUTPUT_DIR = `C:/Go/_gopath/src/ms/sun/models/x/`                                         //"./play/gen_sample_out.go"
-const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:/dev_working2/MS_Native/proto/src/main/java/ir/ms/pb` //"./play/gen_sample_out.go"
-const OUTPUT_ANDROID_APP_DIR = `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb` //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:/dev_working2/MS_Native/proto/src/main/java/ir/ms/pb/` //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_APP_DIR = `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb/` //"./play/gen_sample_out.go"
 //const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
 const TEMPLATES_DIR = `C:/Go/_gopath/src/ms/ants/templates/` //relative to main func of parent directory
 const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun/models/protos`
