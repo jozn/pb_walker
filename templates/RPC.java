@@ -16,24 +16,36 @@ public static class {{.Name}} {
 
   {{- range .Methods}}
     public static void {{.MethodName}}( {{.InTypeName}} param ,{{.MethodName}}_ResultHandler resultHandler, ErrorCallback errorCallback){
-		SuccessCallback callback = null;
-		if(resultHandler != null){
-			callback = new SuccessCallback() {
-				@Override
-				public void handle(byte[] data) {
-					Log.i("RPC ws", "handling rpc respnse for: {{.MethodName}} with respose class {{.OutTypeName}}");
-					try {
-						{{.OutTypeName}} d ={{.OutTypeName}}.parseFrom(data);
-						resultHandler.onResult(d);
-					}catch (com.google.protobuf.InvalidProtocolBufferException e){
-						Log.d("RPC ws", "parsing protocol buffer is faild: {{.OutTypeName}}");
-					}
-				}
-			};
-		}
-
-		Pipe.send("{{$SName}}.{{.MethodName}}", param, callback ,errorCallback);
+		{{.MethodName}}Impl(param,resultHandler, errorCallback ,false,"");
     }
+
+    public static void {{.MethodName}}_Offline(String offlineKey, {{.InTypeName}} param ,{{.MethodName}}_ResultHandler resultHandler, ErrorCallback errorCallback){
+    		{{.MethodName}}Impl(param,resultHandler, errorCallback ,true ,offlineKey);
+    }
+
+    private static void {{.MethodName}}Impl( {{.InTypeName}} param ,{{.MethodName}}_ResultHandler resultHandler, ErrorCallback errorCallback , Boolean offline,String offlineKey){
+    		SuccessCallback callback = null;
+    		if(resultHandler != null){
+    			callback = new SuccessCallback() {
+    				@Override
+    				public void handle(byte[] data) {
+    					Log.i("RPC ws", "handling rpc respnse for: {{.MethodName}} with respose class {{.OutTypeName}}");
+    					try {
+    						{{.OutTypeName}} d ={{.OutTypeName}}.parseFrom(data);
+    						resultHandler.onResult(d);
+    					}catch (com.google.protobuf.InvalidProtocolBufferException e){
+    						Log.d("RPC ws", "parsing protocol buffer is faild: {{.OutTypeName}}");
+    					}
+    				}
+    			};
+    		}
+
+    		if(offline){
+    			Pipe.sendOffline(offlineKey,"{{$SName}}.{{.MethodName}}", param, callback ,errorCallback);
+    		}else{
+    		  Pipe.send("{{$SName}}.{{.MethodName}}", param, callback ,errorCallback);
+    		}
+        }
   {{- end -}}
 }
 {{- end}}
