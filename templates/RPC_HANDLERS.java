@@ -56,7 +56,7 @@ public interface {{.Name}} {
 				if(pb instanceof {{.OutTypeName}}){
 					{{$SName}}_Default_Handler.{{.MethodName}}(({{.OutTypeName}}) pb, handled);
 				}else{
-					Log.d("RPC", " can not convert response object to {{.OutTypeName}} in rpc: .{{.MethodName}} ");
+					Log.d("RPC", " can not convert response object to {{.OutTypeName}} in rpc: .{{.MethodName}} -- class: " + pb );//.getClass().getName());
 				}
 			});
 	  {{end}}
