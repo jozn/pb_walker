@@ -14,7 +14,7 @@ type RPC_UserParam interface {
 }
 
 type RPC_ResponseHandlerInterface interface {
-    HandleOfflineResult(dataPB interface{},PBClass string,cmd PB_CommandToServer,p RPC_UserParam)
+    HandleOfflineResult(dataPB interface{},PBClass string,RpcName string,cmd PB_CommandToServer,p RPC_UserParam)
     IsUserOnlineResult(interface{}, error)
     HandelError(error)
 }
@@ -73,7 +73,8 @@ func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_All
                     if err == nil {
                         res, err := rpc.{{.MethodName}}(load,params)
                         if err == nil {
-                            RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}",cmd, params)
+                            //RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}",cmd, params)
+                            RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}","{{$rpcName}}.{{.MethodName}}",cmd, params)
                         }else{
                             RPC_ResponseHandler.HandelError(err)
                         }

@@ -28,14 +28,16 @@ public static class {{.Name}} {
     		if(resultHandler != null){
     			callback = new SuccessCallback() {
     				@Override
-    				public void handle(byte[] data) {
+    				public Object handle(byte[] data) {
     					Log.i("RPC ws", "handling rpc respnse for: {{.MethodName}} with respose class {{.OutTypeName}}");
+    					{{.OutTypeName}} d = null;
     					try {
-    						{{.OutTypeName}} d ={{.OutTypeName}}.parseFrom(data);
+    						 d ={{.OutTypeName}}.parseFrom(data);
     						resultHandler.onResult(d);
     					}catch (com.google.protobuf.InvalidProtocolBufferException e){
     						Log.d("RPC ws", "parsing protocol buffer is faild: {{.OutTypeName}}");
     					}
+    					return d;
     				}
     			};
     		}
