@@ -26,6 +26,19 @@ public class {{.RealmClass}} extends RealmObject {
 	    return r;
 	}
 
+	public static {{.Name}} toPB({{.RealmClass}} rV){//realmView
+		{{.Name}}.Builder pbB = {{.Name}}.newBuilder();
+		{{ range $i ,$el :=  .Fields}}
+		{{if (fIsRealmType $el) -}}
+		//r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
+		{{- else -}}
+		 pbB.set{{$el.FieldName}}(rV.{{$el.FieldName}});//{{$i}}
+		{{- end}}
+		{{- end }}
+
+		return pbB.build();
+    	}
+
 }
 	/*
 	folding
