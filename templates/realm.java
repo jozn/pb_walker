@@ -39,6 +39,21 @@ public class {{.RealmClass}} extends RealmObject {
 		return pbB.build();
     	}
 
+	public static {{.Name}}.Builder toPB_Builder({{.RealmClass}} rV){//realmView
+		{{.Name}}.Builder pbB = {{.Name}}.newBuilder();
+		{{ range $i ,$el :=  .Fields}}
+		{{if (fIsRealmType $el) -}}
+		//r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
+		{{- else -}}
+		 pbB.set{{$el.FieldName}}(rV.{{$el.FieldName}});//{{$i}}
+		{{- end}}
+		{{- end }}
+
+		return pbB;
+    	}
+
+
+
 }
 	/*
 	folding
@@ -64,5 +79,30 @@ public class {{.RealmClass}} extends RealmObject {
 	{{ range $i ,$el :=  .Fields}}
 	m. = r.{{$el.FieldName}} ;
 	{{- end }}
+
+
+	//for PB.Builder
+	{{.Name}}.Builder b = {{.Name}}.newBuilder();
+	{{ range $i ,$el :=  .Fields}}
+	{{if (fIsRealmType $el) -}}
+	//r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
+	{{- else -}}
+	 b.set{{$el.FieldName}}(r.{{$el.FieldName}});//{{$i}}
+	{{- end}}
+	{{- end }}
+
+
+	//for PB.Builder - empty
+	{{.Name}}.Builder b = {{.Name}}.newBuilder();
+	{{ range $i ,$el :=  .Fields}}
+	{{if (fIsRealmType $el) -}}
+	//r.{{$el.FieldName}} = pb.get{{$el.FieldName}}();//{{$i}}
+	{{- else -}}
+	 b.set{{$el.FieldName}}();//{{$i}}
+	{{- end}}
+	{{- end }}
+
+
+
 	
 */

@@ -46,10 +46,10 @@ func Run() {
 	build(gen)
 
 	/////////// commeant albe ///
-	/*os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
+	os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
 	err = exec.Command(`C:/Go/_gopath/src/ms/sun/scripts/gen_pb.exe`).Run()
 	noErr(err)
-	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()*/
+	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()
 	//noErr(err)
 
 	err = exec.Command("javafmt").Run()

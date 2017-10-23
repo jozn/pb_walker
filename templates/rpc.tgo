@@ -14,9 +14,19 @@ type RPC_UserParam interface {
 }
 
 type RPC_ResponseHandlerInterface interface {
-    HandleOfflineResult(dataPB interface{},PBClass string,RpcName string,cmd PB_CommandToServer,p RPC_UserParam, paramParsed interface{})
+    //HandleOfflineResult(dataPB interface{},PBClass string,RpcName string,cmd PB_CommandToServer,p RPC_UserParam, paramParsed interface{})
+    HandleOfflineResult(resOut RpcResponseOutput)
     IsUserOnlineResult(interface{}, error)
     HandelError(error)
+}
+
+type RpcResponseOutput struct {
+    UserParam       RPC_UserParam
+    ResponseData    interface{}
+    PBClassName     string
+    RpcName         string
+    CommandToServer PB_CommandToServer
+    RpcParamPassed  interface{}
 }
 
 var RPC_ResponseHandler RPC_ResponseHandlerInterface
@@ -73,8 +83,17 @@ func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_All
                     if err == nil {
                         res, err := rpc.{{.MethodName}}(load,params)
                         if err == nil {
+                            out:= RpcResponseOutput{
+                                RpcName: "{{$rpcName}}.{{.MethodName}}",
+                                UserParam: params,
+                                CommandToServer: cmd,
+                                PBClassName: "{{.OutTypeName}}",
+                                ResponseData: res,
+                                RpcParamPassed: load,
+                            }
                             //RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}",cmd, params)
-                            RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}","{{$rpcName}}.{{.MethodName}}",cmd, params , load)
+                            //RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}","{{$rpcName}}.{{.MethodName}}",cmd, params , load)
+                            RPC_ResponseHandler.HandleOfflineResult(out)
                         }else{
                             RPC_ResponseHandler.HandelError(err)
                         }
