@@ -13,9 +13,10 @@ import (
 	"path"
 )
 
-const OUTPUT_DIR = `C:/Go/_gopath/src/ms/sun/models/x/`                                         //"./play/gen_sample_out.go"
+const OUTPUT_DIR_GO_X = `C:/Go/_gopath/src/ms/sun/models/x/`                                      //"./play/gen_sample_out.go"
+const OUTPUT_DIR_GO_X_CONST = `C:/Go/_gopath/src/ms/sun/models/x/xconst/`                                      //"./play/gen_sample_out.go"
 const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:/dev_working2/MS_Native/proto/src/main/java/ir/ms/pb/` //"./play/gen_sample_out.go"
-const OUTPUT_ANDROID_APP_DIR = `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb/` //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_APP_DIR = `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb/`            //"./play/gen_sample_out.go"
 //const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
 const TEMPLATES_DIR = `C:/Go/_gopath/src/ms/ants/templates/` //relative to main func of parent directory
 const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun/models/protos`
@@ -49,7 +50,7 @@ func Run() {
 	os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
 	err = exec.Command(`C:/Go/_gopath/src/ms/sun/scripts/gen_pb.exe`).Run()
 	noErr(err)
-	err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()
+	err = exec.Command("gofmt", "-w", OUTPUT_DIR_GO_X).Run()
 	//noErr(err)
 
 	err = exec.Command("javafmt").Run()
@@ -93,7 +94,7 @@ func RunV2() {
 	/*os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
 	  err = exec.Command(`C:/Go/_gopath/src/ms/sun/scripts/gen_pb.exe`).Run()
 	  noErr(err)
-	  err = exec.Command("gofmt", "-w", OUTPUT_DIR).Run()*/
+	  err = exec.Command("gofmt", "-w", OUTPUT_DIR_GO_X).Run()*/
 	//noErr(err)
 
 	err = exec.Command("javafmt").Run()

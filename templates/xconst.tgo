@@ -1,0 +1,7 @@
+package xconst
+
+const (
+{{- range .Messages}}
+    {{.Name}} = "{{.Name}}"
+{{- end}}
+)
