@@ -32,9 +32,9 @@ type RpcResponseOutput struct {
 var RPC_ResponseHandler RPC_ResponseHandlerInterface
 
 //note: rpc methods cant have equal name they must be different even in different rpc services
-type RPC_AllHandlersInteract interface {
+type RPC_AllHandlersInteract struct {
 {{range .Services}}
-   {{.Name}}
+   {{.Name}} {{.Name}}
 {{- end}}
 }
 
@@ -67,13 +67,14 @@ func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_All
 {{range .Services}}
     case "{{.Name}}":
             {{$rpcName := .Name }}
-            rpc,ok := rpcHandler.({{.Name}})
-            if !ok {
+            //rpc,ok := rpcHandler.{{.Name}}
+            rpc := rpcHandler.{{.Name}}
+            /*if !ok {
                 e:=errors.New("rpcHandler could not be cast to : {{.Name}}")
                 noDevErr(e)
                 RPC_ResponseHandler.HandelError(e)
                 return
-            }
+            }*/
 
             switch splits[1]  {
             {{- range .Methods}}
