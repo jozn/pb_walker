@@ -42,7 +42,7 @@ type RPC_AllHandlersInteract struct {
 {{range .Services}}
 type {{.Name}} interface {
 {{- range .Methods}}
-    {{.MethodName}}(i *{{.InTypeName}}, p RPC_UserParam ) (*{{.OutTypeName}} ,error)
+    {{.MethodName}}(param *{{.InTypeName}}, userParam RPC_UserParam ) (res {{.OutTypeName}} ,err error)
 {{- end}}
 }
 {{end}}
@@ -54,7 +54,7 @@ func noDevErr(err error)  {
 }
 
 ////////////// map of rpc methods to all
-func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_AllHandlersInteract) {
+func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_AllHandlersInteract,responseHandler RPC_ResponseHandlerInterface) {
 
     splits := strings.Split(cmd.Command, ".")
 
@@ -89,17 +89,17 @@ func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_All
                                 UserParam: params,
                                 CommandToServer: cmd,
                                 PBClassName: "{{.OutTypeName}}",
-                                ResponseData: res,
+                                ResponseData: &res,
                                 RpcParamPassed: load,
                             }
                             //RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}",cmd, params)
                             //RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}","{{$rpcName}}.{{.MethodName}}",cmd, params , load)
-                            RPC_ResponseHandler.HandleOfflineResult(out)
+                            responseHandler.HandleOfflineResult(out)
                         }else{
-                            RPC_ResponseHandler.HandelError(err)
+                            responseHandler.HandelError(err)
                         }
                     }else{
-                     RPC_ResponseHandler.HandelError(err)
+                        responseHandler.HandelError(err)
                     }
             {{- end}}
                 default:
