@@ -27,6 +27,7 @@ func build(gen *GenOut) {
 	writeOutputAndroidProto("RPC_HANDLERS.java", buildFromTemplate("RPC_HANDLERS.java", gen))
 	writeOutputAndroidProto("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
 	writeOutputAndroidApp("RPC.java", buildFromTemplate("RPC.java", gen))
+	writeOutputAndroidApp("RPC_API.java", buildFromTemplate("RPC_API.java", gen))
 	writeOutputAndroidApp("RpcNameToResponseMapper.java", buildFromTemplate("RpcNameToResponseMapper.java", gen))
 	writeOutputAndroidProto("RPC_ResponseBase.java", buildFromTemplate("RPC_ResponseBase.java", gen))
 
