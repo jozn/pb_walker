@@ -1,7 +1,5 @@
 package ir.ms.pb;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;

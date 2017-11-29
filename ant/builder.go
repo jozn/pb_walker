@@ -30,6 +30,8 @@ func build(gen *GenOut) {
 	writeOutputAndroidApp("RPC_API.java", buildFromTemplate("RPC_API.java", gen))
 	writeOutputAndroidApp("RpcNameToResponseMapper.java", buildFromTemplate("RpcNameToResponseMapper.java", gen))
 	writeOutputAndroidProto("RPC_ResponseBase.java", buildFromTemplate("RPC_ResponseBase.java", gen))
+	//copy
+	writeOutputAndroidProto("Log.java", buildFromTemplate("Log.java", gen))
 
 	/////// Enums /////////////////
 
