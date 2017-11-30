@@ -9,22 +9,20 @@ import (
 	"os"
 	_ "os"
 	"os/exec"
-	_ "os/exec"
 	"path"
 )
 
-const OUTPUT_DIR_GO_X = `C:/Go/_gopath/src/ms/sun/models/x/`                                      //"./play/gen_sample_out.go"
-const OUTPUT_DIR_GO_X_CONST = `C:/Go/_gopath/src/ms/sun/models/x/xconst/`                                      //"./play/gen_sample_out.go"
-const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:\dev_working2\social\proto3\src\main\java\ir\ms\pb\` //`D:/dev_working2/MS_Native/proto/src/main/java/ir/ms/pb/` //"./play/gen_sample_out.go"
-const OUTPUT_ANDROID_APP_DIR = `D:\dev_working2\social\app\src\main\java\ir\ms\pb\` // `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb/`            //"./play/gen_sample_out.go"
+const OUTPUT_DIR_GO_X = `C:/Go/_gopath/src/ms/sun/models/x/`                                   //"./play/gen_sample_out.go"
+const OUTPUT_DIR_GO_X_CONST = `C:/Go/_gopath/src/ms/sun/models/x/xconst/`                      //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:\dev_working2\social\proto\src\main\java\ir\ms\pb\` //`D:/dev_working2/MS_Native/proto/src/main/java/ir/ms/pb/` //"./play/gen_sample_out.go"
+const OUTPUT_ANDROID_APP_DIR = `D:\dev_working2\social\app\src\main\java\ir\ms\pb\`            // `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb/`            //"./play/gen_sample_out.go"
 //const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
 const TEMPLATES_DIR = `C:/Go/_gopath/src/ms/ants/templates/` //relative to main func of parent directory
 const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun/models/protos`
 
-const REALM  = "realm"
+const REALM = "realm"
 
 const OUTPUT_ANDROID_REALM_DIR_ = `D:/dev_working2/MS_Native/app/src/main/java/com/mardomsara/social/models_realm/pb_realm/`
-
 
 func Run() {
 	xxx()
@@ -81,12 +79,12 @@ func RunV2() {
 		Services: ExtractAllServicesViewsV2(prtos),
 		Enums:    ExtractAllEnumsViewsV2(prtos),
 	}
-    //gen.Realms = GetAllARealmMessageViews(gen.Messages)
-    gen.Realms = GetAllARealmMessageViews_FromComments(gen.Messages)
+	//gen.Realms = GetAllARealmMessageViews(gen.Messages)
+	gen.Realms = GetAllARealmMessageViews_FromComments(gen.Messages)
 
-    print("===========================================")
-    //helper.PertyPrint(gen.Messages)
-    //helper.PertyPrint(prtos)
+	print("===========================================")
+	//helper.PertyPrint(gen.Messages)
+	//helper.PertyPrint(prtos)
 
 	build(gen)
 
