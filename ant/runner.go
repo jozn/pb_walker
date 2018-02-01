@@ -18,7 +18,7 @@ const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:\ms\social\proto\src\main\java\ir\ms\
 const OUTPUT_ANDROID_APP_DIR = `D:\ms\social\app\src\main\java\ir\ms\pb\`            // `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb/`            //"./play/gen_sample_out.go"
 //const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
 const TEMPLATES_DIR = `C:/Go/_gopath/src/ms/ants/templates/` //relative to main func of parent directory
-const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun2/models/protos`
+const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun2/shared/proto`
 
 const REALM = "realm"
 
