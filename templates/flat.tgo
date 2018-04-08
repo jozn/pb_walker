@@ -1,6 +1,6 @@
 package x
 
-import "ms/sun/helper"
+import "ms/sun/shared/helper"
 
 {{range .Messages}}
 type {{.Name}}_Flat struct {

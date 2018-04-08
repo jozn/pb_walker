@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/dsymonds/gotoc/parser"
 	"io/ioutil"
-	"ms/sun/helper"
+	"ms/sun/shared/helper"
 	"strings"
 )
 

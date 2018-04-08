@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/emicklei/proto"
-	"ms/sun/helper"
+	"ms/sun/shared/helper"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/binary"
 	"log"
-	"ms/sun/helper"
+	"ms/sun/shared/helper"
 	"strings"
 )
 

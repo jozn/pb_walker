@@ -5,20 +5,20 @@ import (
 	"github.com/emicklei/proto"
 	"github.com/labstack/gommon/log"
 	"io/ioutil"
-	"ms/sun/helper"
+	"ms/sun/shared/helper"
 	"os"
 	_ "os"
 	"os/exec"
 	"path"
 )
 
-const OUTPUT_DIR_GO_X = `C:/Go/_gopath/src/ms/sun2/shared/x/`                                   //"./play/gen_sample_out.go"
-const OUTPUT_DIR_GO_X_CONST = `C:/Go/_gopath/src/ms/sun2/shared/x/xconst/`                      //"./play/gen_sample_out.go"
+const OUTPUT_DIR_GO_X = `C:/Go/_gopath/src/ms/sun/shared/x/`                                   //"./play/gen_sample_out.go"
+const OUTPUT_DIR_GO_X_CONST = `C:/Go/_gopath/src/ms/sun/shared/x/xconst/`                      //"./play/gen_sample_out.go"
 const OUTPUT_ANDROID_PROTO_MOUDLE_DIR = `D:\ms\social\proto\src\main\java\ir\ms\pb\` //`D:/dev_working2/MS_Native/proto/src/main/java/ir/ms/pb/` //"./play/gen_sample_out.go"
 const OUTPUT_ANDROID_APP_DIR = `D:\ms\social\app\src\main\java\ir\ms\pb\`            // `D:/dev_working2/MS_Native/app/src/main/java/ir/ms/pb/`            //"./play/gen_sample_out.go"
 //const TEMPLATES_DIR = "./templates/"                    //relative to main func of parent directory
-const TEMPLATES_DIR = `C:/Go/_gopath/src/ms/ants/templates/` //relative to main func of parent directory
-const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun2/shared/proto`
+const TEMPLATES_DIR = `C:/Go/_gopath/src/ms/pb_walker/templates/` //relative to main func of parent directory
+const DIR_PROTOS = `C:/Go/_gopath/src/ms/sun/shared/proto`
 
 const REALM = "realm"
 
@@ -45,8 +45,8 @@ func Run() {
 	build(gen)
 
 	/////////// commeant albe ///
-	os.Chdir(`C:/Go/_gopath/src/ms/sun2/scripts/`)
-	err = exec.Command(`C:/Go/_gopath/src/ms/sun2/scripts/gen_pb.exe`).Run()
+	os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
+	err = exec.Command(`C:/Go/_gopath/src/ms/sun/scripts/gen_pb.exe`).Run()
 	noErr(err)
 	err = exec.Command("gofmt", "-w", OUTPUT_DIR_GO_X).Run()
 	//noErr(err)
@@ -89,8 +89,8 @@ func RunV2() {
 	build(gen)
 
 	/////////// commeant albe ///
-	/*os.Chdir(`C:/Go/_gopath/src/ms/sun/scripts/`)
-	  err = exec.Command(`C:/Go/_gopath/src/ms/sun/scripts/gen_pb.exe`).Run()
+	/*os.Chdir(`C:/Go/_gopath/src/ms/sun_old/scripts/`)
+	  err = exec.Command(`C:/Go/_gopath/src/ms/sun_old/scripts/gen_pb.exe`).Run()
 	  noErr(err)
 	  err = exec.Command("gofmt", "-w", OUTPUT_DIR_GO_X).Run()*/
 	//noErr(err)

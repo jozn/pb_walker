@@ -1,6 +1,6 @@
 package main
 
-import "ms/ants/ant"
+import "ms/pb_walker/ant"
 
 //////////////////////////
 
