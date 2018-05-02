@@ -1,0 +1,40 @@
+package x
+
+import "github.com/golang/protobuf/proto"
+
+//type RPCClientHandler func(cmd string, pb interface{}) interface{}
+type RPCClientHandler func(cmdSre string, pbIn,pbOut proto.Message) ( error)
+// all clients struc
+var RPC_AllClinetsPlay = struct {
+    {{- range .Services}}
+    {{.Name}} {{.Name}}_Client
+    {{- end}}
+}{
+    {{- range .Services}}
+    {{.Name}}: {{.Name}}_Client(0),
+    {{- end}}
+}
+
+// client types defs
+{{- range .Services}}
+type {{.Name}}_Client int
+{{- end}}
+
+
+/////////////// methods ////////////////
+{{range .Services}}
+{{$rpc := .Name }}
+// service: {{.Name}}
+{{- range .Methods}}
+
+func ({{$rpc}}_Client) {{.MethodName}}(param *{{.InTypeName}}, fn RPCClientHandler) (*{{.OutTypeName}}, error) {
+    out := &{{.OutTypeName}}{}
+    err := fn("{{.FullMethodName}}", param,out)
+    if err == nil {
+    return out, nil
+    }
+    return nil, err
+}
+
+{{- end}}
+{{end}}

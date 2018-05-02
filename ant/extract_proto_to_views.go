@@ -3,32 +3,33 @@ package ant
 import (
 	"github.com/dsymonds/gotoc/ast"
 )
-
+//deps
 func ExtractAllServicesViews(pbFilesSet *ast.FileSet) []ServiceView {
-    serviceViews := make([]ServiceView, 0)
+	serviceViews := make([]ServiceView, 0)
 
-    for _, pbFile := range pbFilesSet.Files {
-        for _, ser := range pbFile.Services {
-            serView := ServiceView{
-                Name:    ser.Name,
-                Comment: findComment(ser.Position, pbFile),
-                Hash:    Hash32(ser.Name),
-            }
+	for _, pbFile := range pbFilesSet.Files {
+		for _, ser := range pbFile.Services {
+			serView := ServiceView{
+				Name:    ser.Name,
+				Comment: findComment(ser.Position, pbFile),
+				Hash:    Hash32(ser.Name),
+			}
 
-            for _, m := range ser.Methods {
-                mv := MethodView{
-                    MethodName:  m.Name,
-                    InTypeName:  m.InTypeName,
-                    OutTypeName: m.OutTypeName,
-                    Hash:        Hash32(m.Name),
-                }
-                serView.Methods = append(serView.Methods, mv)
-            }
-            serviceViews = append(serviceViews, serView)
-        }
-    }
+			for _, m := range ser.Methods {
+				mv := MethodView{
+					MethodName:     m.Name,
+					InTypeName:     m.InTypeName,
+					OutTypeName:    m.OutTypeName,
+					Hash:           Hash32(m.Name),
+					FullMethodName: serView.Name + "." + m.Name,
+				}
+				serView.Methods = append(serView.Methods, mv)
+			}
+			serviceViews = append(serviceViews, serView)
+		}
+	}
 
-    return serviceViews
+	return serviceViews
 }
 
 func ExtractAllMessagesViews(pbFilesSet *ast.FileSet) []MessageView {
@@ -86,12 +87,10 @@ func ExtractAllEnumsViews(pbFilesSet *ast.FileSet) []EnumView {
 }
 
 func findComment(pos ast.Position, pbFile *ast.File) string {
-    for _, com := range pbFile.Comments {
-        if com.End.Line == pos.Line-1 && len(com.Text) > 0 {
-            return com.Text[len(com.Text)-1]
-        }
-    }
-    return ""
+	for _, com := range pbFile.Comments {
+		if com.End.Line == pos.Line-1 && len(com.Text) > 0 {
+			return com.Text[len(com.Text)-1]
+		}
+	}
+	return ""
 }
-
-

@@ -23,7 +23,9 @@ func build(gen *GenOut) {
 	writeOutput("flat.go", buildFromTemplate("flat.tgo", gen))
     writeOutputConstant("pb.go", buildFromTemplate("xconst.tgo", gen))
 
-	//////////////// For Android /////////////
+    writeOutput("rpc_client.go", buildFromTemplate("rpc_client.tgo", gen))
+
+    //////////////// For Android /////////////
 	writeOutputAndroidProto("RPC_HANDLERS.java", buildFromTemplate("RPC_HANDLERS.java", gen))
 	writeOutputAndroidProto("PBFlatTypes.java", buildFromTemplate("PBFlatTypes.java", gen))
 	writeOutputAndroidApp("RPC.java", buildFromTemplate("RPC.java", gen))

@@ -24,10 +24,11 @@ func ExtractAllServicesViewsV2(protos []*proto.Proto) []ServiceView {
 				for _, m2 := range ser.Elements {
 					if m, ok := m2.(*proto.RPC); ok {
 						mv := MethodView{
-							MethodName:  m.Name,
-							InTypeName:  m.RequestType,
-							OutTypeName: m.ReturnsType,
-							Hash:        Hash32(m.Name),
+							MethodName:     m.Name,
+							InTypeName:     m.RequestType,
+							OutTypeName:    m.ReturnsType,
+							Hash:           Hash32(m.Name),
+							FullMethodName: serView.Name + "." + m.Name,
 						}
 						serView.Methods = append(serView.Methods, mv)
 					}
@@ -55,15 +56,15 @@ func ExtractAllMessagesViewsV2(protos []*proto.Proto) []MessageView {
 				for _, f2 := range msg.Elements {
 					if f, ok := f2.(*proto.NormalField); ok {
 						mv := FieldView{
-							FieldName:  f.Name,
-							TypeName:   f.Type,
-							Repeated:   f.Repeated,
-							TagNumber:  f.Sequence,
-							GoType:     pbTypesToGoType(f.Type),
-							GoFlatType: pbTypesToGoFlatTypes(f.Type),
-							JavaType:   pbTypesToJavaType(f.Type),
-							Options:    protoOptionsToOptionsView(f.Options),
-                            RealmTypeName: pbToRealmName(pbTypesToJavaType(f.Type)),
+							FieldName:     f.Name,
+							TypeName:      f.Type,
+							Repeated:      f.Repeated,
+							TagNumber:     f.Sequence,
+							GoType:        pbTypesToGoType(f.Type),
+							GoFlatType:    pbTypesToGoFlatTypes(f.Type),
+							JavaType:      pbTypesToJavaType(f.Type),
+							Options:       protoOptionsToOptionsView(f.Options),
+							RealmTypeName: pbToRealmName(pbTypesToJavaType(f.Type)),
 						}
 						msgView.Fields = append(msgView.Fields, mv)
 					}

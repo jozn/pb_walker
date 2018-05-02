@@ -10,11 +10,12 @@ type ServiceView struct {
 }
 
 type MethodView struct {
-	MethodName  string
-	InTypeName  string
-	OutTypeName string
-	Hash        int32
-	Options     []OptionsView
+	MethodName     string
+	InTypeName     string
+	OutTypeName    string
+	Hash           int32
+	Options        []OptionsView
+	FullMethodName string // RPC_Other.Echo
 }
 
 ////////// Messages /////////

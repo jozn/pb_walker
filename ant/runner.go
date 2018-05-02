@@ -1,7 +1,6 @@
 package ant
 
 import (
-	"github.com/dsymonds/gotoc/parser"
 	"github.com/emicklei/proto"
 	"github.com/labstack/gommon/log"
 	"io/ioutil"
@@ -24,7 +23,7 @@ const REALM = "realm"
 
 const OUTPUT_ANDROID_REALM_DIR_ = `D:/ms/social/app/src/main/java/com/mardomsara/social/models_realm/pb_realm/`
 
-func Run() {
+/*func Run() {
 	xxx()
 	files, err := ioutil.ReadDir(DIR_PROTOS)
 	noErr(err)
@@ -54,7 +53,7 @@ func Run() {
 	err = exec.Command("javafmt").Run()
 	////
 }
-
+*/
 func RunV2() {
 	//xxx()
 	files, err := ioutil.ReadDir(DIR_PROTOS)
@@ -90,9 +89,9 @@ func RunV2() {
 
 	/////////// commeant albe ///
 	/*os.Chdir(`C:/Go/_gopath/src/ms/sun_old/scripts/`)
-	  err = exec.Command(`C:/Go/_gopath/src/ms/sun_old/scripts/gen_pb.exe`).Run()
+	  err = exec.FullMethodName(`C:/Go/_gopath/src/ms/sun_old/scripts/gen_pb.exe`).Run()
 	  noErr(err)
-	  err = exec.Command("gofmt", "-w", OUTPUT_DIR_GO_X).Run()*/
+	  err = exec.FullMethodName("gofmt", "-w", OUTPUT_DIR_GO_X).Run()*/
 	//noErr(err)
 
 	err = exec.Command("javafmt").Run()
