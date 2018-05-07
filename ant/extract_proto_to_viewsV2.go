@@ -24,11 +24,12 @@ func ExtractAllServicesViewsV2(protos []*proto.Proto) []ServiceView {
 				for _, m2 := range ser.Elements {
 					if m, ok := m2.(*proto.RPC); ok {
 						mv := MethodView{
-							MethodName:     m.Name,
-							InTypeName:     m.RequestType,
-							OutTypeName:    m.ReturnsType,
-							Hash:           Hash32(m.Name),
-							FullMethodName: serView.Name + "." + m.Name,
+							MethodName:        m.Name,
+							InTypeName:        m.RequestType,
+							OutTypeName:       m.ReturnsType,
+							Hash:              Hash32(m.Name),
+							FullMethodName:    serView.Name + "." + m.Name,
+							ParentServiceName: serView.Name,
 						}
 						serView.Methods = append(serView.Methods, mv)
 					}

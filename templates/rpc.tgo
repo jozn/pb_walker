@@ -53,63 +53,68 @@ func noDevErr(err error)  {
     }
 }
 
+type rpcParamHandler struct {
+    cmd PB_CommandToServer
+    params RPC_UserParam
+    rpcHandler RPC_AllHandlersInteract
+    responseHandler RPC_ResponseHandlerInterface
+}
+
+//todo: this method can be outputed from x package
 ////////////// map of rpc methods to all
 func HandleRpcs(cmd PB_CommandToServer, params RPC_UserParam, rpcHandler RPC_AllHandlersInteract,responseHandler RPC_ResponseHandlerInterface) {
 
-    splits := strings.Split(cmd.Command, ".")
-
-    if len(splits) != 2 {
-        noDevErr(errors.New("HandleRpcs: splic is not 2 parts"))
-        return
+    fn,ok := mpRpcMethods[cmd.Command]
+    if !ok {
+        if config.IS_DEBUG {
+            log.Panic("HandleRpcs:  command not registerd for ", cmd.Command)
+        }
     }
+    
+    p := rpcParamHandler{
+		cmd:             cmd,
+		params:          params,
+		rpcHandler:      rpcHandler,
+		responseHandler: responseHandler,
+	}
+	fn(p)
+}
 
-    switch splits[0] {
-{{range .Services}}
-    case "{{.Name}}":
-            {{$rpcName := .Name }}
-            //rpc,ok := rpcHandler.{{.Name}}
-            rpc := rpcHandler.{{.Name}}
-            /*if !ok {
-                e:=errors.New("rpcHandler could not be cast to : {{.Name}}")
-                noDevErr(e)
-                RPC_ResponseHandler.HandelError(e)
-                return
-            }*/
-
-            switch splits[1]  {
-            {{- range .Methods}}
-                case "{{.MethodName}}": //each pb_service_method
-                    load := &{{.InTypeName}}{}
-                    err := proto.Unmarshal(cmd.Data, load)
-                    if err == nil {
-                        res, err := rpc.{{.MethodName}}(load,params)
-                        if err == nil {
-                            out:= RpcResponseOutput{
-                                RpcName: "{{$rpcName}}.{{.MethodName}}",
-                                UserParam: params,
-                                CommandToServer: cmd,
-                                PBClassName: "{{.OutTypeName}}",
-                                ResponseData: &res,
-                                RpcParamPassed: load,
-                            }
-                            //RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}",cmd, params)
-                            //RPC_ResponseHandler.HandleOfflineResult(res,"{{.OutTypeName}}","{{$rpcName}}.{{.MethodName}}",cmd, params , load)
-                            responseHandler.HandleOfflineResult(out)
-                        }else{
-                            responseHandler.HandelError(err)
-                        }
-                    }else{
-                        responseHandler.HandelError(err)
-                    }
-            {{- end}}
-                default:
-                    noDevErr(errors.New("rpc method is does not exist: "+cmd.Command))
+var mpRpcMethods = map[string]func(p rpcParamHandler){
+    {{range .Services}}
+    // rpc: {{.Name}}
+    {{ range .Methods}}
+    "{{.FullMethodName}}": func(p rpcParamHandler) {
+    	if p.rpcHandler.{{.ParentServiceName}} == nil {
+            noDevErr(errors.New("rpc service is null for: p.rpcHandler.{{.FullMethodName}}"))
+            return
+        }
+        load := &{{.InTypeName}}{}
+        err := proto.Unmarshal(p.cmd.Data, load)
+        if err == nil {
+            res, err := p.rpcHandler.{{.FullMethodName}}(load,p.params)
+            if err == nil {
+                out:= RpcResponseOutput{
+                    RpcName: "{{.FullMethodName}}",
+                    UserParam: p.params,
+                    CommandToServer: p.cmd,
+                    PBClassName: "{{.OutTypeName}}",
+                    ResponseData: &res,
+                    RpcParamPassed: load,
+                }
+                p.responseHandler.HandleOfflineResult(out)
+            }else{
+                p.responseHandler.HandelError(err)
             }
-{{- end}}
-    default:
-    noDevErr(errors.New("rpc dosent exisit for: "+cmd.Command))
+        }else{
+            p.responseHandler.HandelError(err)
+        }
+    },
+    {{- end}}
+    {{end}}
+
 }
-}
+
 
 /////////////// Direct in PB_CommandToClient /////////////
 /*
