@@ -12,7 +12,9 @@ type ServiceView struct {
 type MethodView struct {
 	MethodName        string
 	InTypeName        string
+	GoInTypeName      string
 	OutTypeName       string
+	GoOutTypeName     string
 	Hash              int32
 	Options           []OptionsView
 	FullMethodName    string // RPC_Other.Echo

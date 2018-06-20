@@ -26,7 +26,9 @@ func ExtractAllServicesViewsV2(protos []*proto.Proto) []ServiceView {
 						mv := MethodView{
 							MethodName:        m.Name,
 							InTypeName:        m.RequestType,
+							GoInTypeName:      strings.Replace(m.RequestType, ".", "_", -1),
 							OutTypeName:       m.ReturnsType,
+							GoOutTypeName:     strings.Replace(m.ReturnsType, ".", "_", -1),
 							Hash:              Hash32(m.Name),
 							FullMethodName:    serView.Name + "." + m.Name,
 							ParentServiceName: serView.Name,

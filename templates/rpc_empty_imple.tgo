@@ -9,7 +9,7 @@ type {{$rpc}} int
 var Empty_RPC_{{.Name}}_Sample = {{$rpc}}(0)
 
 {{ range .Methods}}
-    func ({{$rpc}}){{.MethodName}}(i *{{.InTypeName}}, p RPC_UserParam ) (*{{.OutTypeName}} ,error){
+    func ({{$rpc}}){{.MethodName}}(i *{{.GoInTypeName}}, p RPC_UserParam ) (*{{.GoOutTypeName}} ,error){
     return nil,nil
 }
 {{- end}}

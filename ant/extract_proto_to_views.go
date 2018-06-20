@@ -2,7 +2,9 @@ package ant
 
 import (
 	"github.com/dsymonds/gotoc/ast"
+	"strings"
 )
+
 //deps
 func ExtractAllServicesViews(pbFilesSet *ast.FileSet) []ServiceView {
 	serviceViews := make([]ServiceView, 0)
@@ -19,7 +21,9 @@ func ExtractAllServicesViews(pbFilesSet *ast.FileSet) []ServiceView {
 				mv := MethodView{
 					MethodName:     m.Name,
 					InTypeName:     m.InTypeName,
+					GoInTypeName:   strings.Replace(m.InTypeName, ".", "_", -1),
 					OutTypeName:    m.OutTypeName,
+					GoOutTypeName:  strings.Replace(m.OutTypeName, ".", "_", -1),
 					Hash:           Hash32(m.Name),
 					FullMethodName: serView.Name + "." + m.Name,
 				}

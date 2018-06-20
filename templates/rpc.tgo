@@ -11,6 +11,7 @@ import (
 type RPC_UserParam interface {
     GetUserId() int
     IsUser() bool
+    FailRequest(error PB_Error)
 }
 
 type RPC_ResponseHandlerInterface interface {
@@ -42,7 +43,7 @@ type RPC_AllHandlersInteract struct {
 {{range .Services}}
 type {{.Name}} interface {
 {{- range .Methods}}
-    {{.MethodName}}(param *{{.InTypeName}}, userParam RPC_UserParam ) (res {{.OutTypeName}} ,err error)
+    {{.MethodName}}(param *{{.GoInTypeName}}, userParam RPC_UserParam ) (res {{.GoOutTypeName}} ,errRes error)
 {{- end}}
 }
 {{end}}
@@ -89,7 +90,7 @@ var mpRpcMethods = map[string]func(p rpcParamHandler){
             noDevErr(errors.New("rpc service is null for: p.rpcHandler.{{.FullMethodName}}"))
             return
         }
-        load := &{{.InTypeName}}{}
+        load := &{{.GoInTypeName}}{}
         err := proto.Unmarshal(p.cmd.Data, load)
         if err == nil {
             res, err := p.rpcHandler.{{.FullMethodName}}(load,p.params)

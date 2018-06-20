@@ -27,8 +27,8 @@ type {{.Name}}_Client int
 // service: {{.Name}}
 {{- range .Methods}}
 
-func ({{$rpc}}_Client) {{.MethodName}}(param *{{.InTypeName}}, fn RPCClientHandler) (*{{.OutTypeName}}, error) {
-    out := &{{.OutTypeName}}{}
+func ({{$rpc}}_Client) {{.MethodName}}(param *{{.GoInTypeName}}, fn RPCClientHandler) (*{{.GoOutTypeName}}, error) {
+    out := &{{.GoOutTypeName}}{}
     err := fn("{{.FullMethodName}}", param,out)
     if err == nil {
     return out, nil
