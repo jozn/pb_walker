@@ -6,7 +6,8 @@ Real world out put code of this code genrator:
 From this `.proto` files: https://github.com/jozn/sun2/tree/master/shared/proto
 
 Android: https://github.com/jozn/ms_native/tree/master/app/src/main/java/ir/ms/pb
-Go: 
+
+Fo backend Go: 
 - https://github.com/jozn/sun2/blob/master/shared/x/RPC_HANDLERS.java
 - https://github.com/jozn/sun2/blob/master/shared/x/pb__gen_ant.go
 - https://github.com/jozn/sun2/blob/master/shared/x/pb__gen_ant_empty.go
