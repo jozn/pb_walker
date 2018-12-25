@@ -1,5 +1,5 @@
 # pb_walker
-Parses Protocol Buffer files and generates codes for Go and Java. It produce RPC service Interfaces, default implementations, idiomatic code. The generated code is like gRPC but with more capabilities and customized network and error handling. Network has been implemented on top of websocket and on fly can changes to HTTP. The result is a consistent code base, that reduce a lot of boilerplate codes, and has significantly reduced API implementation time, and freedom to test with more features, and more API methods. If API method is not implemented it will be an compile time error. Single source of trust.
+Parses Protocol Buffer files and generates codes for Go and Java. It produces RPC service Interfaces, default implementations, idiomatic code. The generated code is like gRPC but with more capabilities and customized network and error handling. The network has been implemented on top of WebSocket and on the fly can change to HTTP. The result is a consistent code base, that reduces a lot of boilerplate codes, and has significantly reduced API implementation time, and freedom to test with more features, and more API methods. If the API method is not implemented it will be a compile time error. Single source of trust.
 
 ### Sample output
 Real world out put code of this code genrator:
